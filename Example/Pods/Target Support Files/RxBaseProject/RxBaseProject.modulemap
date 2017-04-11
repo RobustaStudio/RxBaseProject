@@ -1,0 +1,6 @@
+framework module RxBaseProject {
+  umbrella header "RxBaseProject-umbrella.h"
+
+  export *
+  module * { export * }
+}

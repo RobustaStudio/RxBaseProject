@@ -1,0 +1,16 @@
+PODS:
+  - RxBaseProject (0.1.0)
+
+DEPENDENCIES:
+  - RxBaseProject (from `../`)
+
+EXTERNAL SOURCES:
+  RxBaseProject:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RxBaseProject: 3740203a4a85a33ec0263a23a51f17065acd470e
+
+PODFILE CHECKSUM: 55d45b0a108ea7ea99660cff2a1f866f24954cc1
+
+COCOAPODS: 1.2.0

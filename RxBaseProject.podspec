@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'RxBaseProject'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of RxBaseProject.'
+  s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
                        DESC
 
-  s.homepage         = 'https://github.com/ahmed93/RxBaseProject'
+  s.homepage         = 'http://gitlab.robustastudio.com/ios/RxBaseProject'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ahmed93' => 'ahmed.moh.magdi93@gmail.com' }
-  s.source           = { :git => 'https://github.com/ahmed93/RxBaseProject.git', :tag => s.version.to_s }
+  s.source           = { :git => 'http://gitlab.robustastudio.com/ios/RxBaseProject', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
