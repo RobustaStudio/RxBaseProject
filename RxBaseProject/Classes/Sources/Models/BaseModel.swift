@@ -10,39 +10,39 @@ import UIKit
 import ObjectMapper
 
 
-class BaseModel: NSObject, Mappable, NSCoding {
+open class BaseModel: NSObject, Mappable, NSCoding {
     
-    var details:NSMutableDictionary! = NSMutableDictionary()
+    public var details:NSMutableDictionary! = NSMutableDictionary()
     
     override init() { super.init()}
     
-    required init?(map: Map) {}
+    required public init?(map: Map) {}
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init()
         decodeData(coder: aDecoder)
     }
     
-    func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         encodeData(with: aCoder)
     }
     
     // Mappable
-    func mapping(map: Map) {}
+    public func mapping(map: Map) {}
     
     // Storing
-    func decodeData(coder aDecoder: NSCoder) {}
+    public func decodeData(coder aDecoder: NSCoder) {}
     
-    func encodeData(with aCoder: NSCoder) {}
+    public func encodeData(with aCoder: NSCoder) {}
     
-    func store(_ object:Any, withKey key:String) {
+    public func store(_ object:Any, withKey key:String) {
         let userDefaults = UserDefaults.standard
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: object)
         userDefaults.set(encodedData, forKey: key)
         userDefaults.synchronize()
     }
     
-    static func getStoredObject(forKey key:String) -> Any? {
+    public static func getStoredObject(forKey key:String) -> Any? {
         let userDefaults = UserDefaults.standard
         if let session = userDefaults.data(forKey: key), let currentSession = NSKeyedUnarchiver.unarchiveObject(with: session) {
             return currentSession
@@ -50,7 +50,7 @@ class BaseModel: NSObject, Mappable, NSCoding {
         return nil
     }
     
-    static func deleteObject(forKey key:String) {
+    public static func deleteObject(forKey key:String) {
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: key)
     }

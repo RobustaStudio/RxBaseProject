@@ -10,12 +10,12 @@ import Foundation
 import ObjectMapper
 
 
-class ErrorModel: BaseModel {
+public class ErrorModel: BaseModel {
     
-    var error:String?
-    var errorDetails:String?
+    public var error:String?
+    public var errorDetails:String?
     
-    override func mapping(map: Map) {
+    public override func mapping(map: Map) {
         error <- map["error"]
         errorDetails <- map["error_description"]
     }

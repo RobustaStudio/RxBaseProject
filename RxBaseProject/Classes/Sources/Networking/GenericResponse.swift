@@ -12,16 +12,16 @@ import RxSwift
 import ObjectMapper
 
 
-class GenericError: NSObject {
+public class GenericError: NSObject {
     
-    static let ErrorMessage = NSLocalizedString("Something went wrong, Try again later", comment: "")
+    public static let ErrorMessage = NSLocalizedString("Something went wrong, Try again later", comment: "")
     
-    var statusCode:Int = 0
-    var errorMessage:String = ""
+    public var statusCode:Int = 0
+    public var errorMessage:String = ""
     
-    var errorObject:ErrorModel?
+    public var errorObject:ErrorModel?
     
-    init(error:MoyaError) {
+    public init(error:MoyaError) {
         super.init()
         self.handleFailure(error: error)
     }

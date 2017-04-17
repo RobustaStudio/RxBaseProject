@@ -15,21 +15,21 @@ private extension Date {
     }
 }
 
-class TokenModel: MiniCashModel {
+public class TokenModel: MiniCashModel {
     
-    var accessToken: String?
-    var tokenType: String?
-    var expiresIn: Int?
-    var refreshToken: String?
+    public var accessToken: String?
+    public var tokenType: String?
+    public var expiresIn: Int?
+    public var refreshToken: String?
     
-    static var shared:TokenModel? {
+    public static var shared:TokenModel? {
         guard let token = TokenModel.getStoredObject(forKey: "current_session") as? TokenModel else {
             return nil
         }
         return token
     }
     
-    override func mapping(map: Map) {
+    public override func mapping(map: Map) {
         super.mapping(map: map)
         accessToken <- map["access_token"]
         tokenType <- map["token_type"]
@@ -37,17 +37,17 @@ class TokenModel: MiniCashModel {
         refreshToken <- map["refresh_token"]
     }
     
-    var isValid: Bool {
+    public var isValid: Bool {
         return (accessToken != nil )
     }
     
     //MARK:- Model Coding Managing
     
-    func save() {
+    public func save() {
         self.store(self, withKey: "current_session")
     }
     
-    override func encodeData(with aCoder: NSCoder) {
+    public override func encodeData(with aCoder: NSCoder) {
         super.encodeData(with: aCoder)
         aCoder.encode(self.accessToken  , forKey: "access_token")
         aCoder.encode(self.tokenType    , forKey: "token_type")
@@ -55,7 +55,7 @@ class TokenModel: MiniCashModel {
         aCoder.encode(self.refreshToken , forKey: "refresh_token")
     }
     
-    override func decodeData(coder aDecoder: NSCoder) {
+    public override func decodeData(coder aDecoder: NSCoder) {
         super.decodeData(coder: aDecoder)
         if let accessToken  = aDecoder.decodeObject(forKey: "access_token") as? String {
             self.accessToken = accessToken
@@ -71,7 +71,7 @@ class TokenModel: MiniCashModel {
         }
     }
 
-    static func invalidate() {
+    public static func invalidate() {
         TokenModel.deleteObject(forKey: "current_session")
         UserModel.invalidate()
     }

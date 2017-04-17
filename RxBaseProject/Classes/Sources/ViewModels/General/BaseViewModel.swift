@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 /// BaseProtocolType contains main input & outputs for whoever implements it
-protocol BaseViewModelType : class {
+public protocol BaseViewModelType : class {
     
     // Input
     var viewDidLoad: PublishSubject<Void> { get }
@@ -23,26 +23,26 @@ protocol BaseViewModelType : class {
     var tableViewPlaceholderText:Driver<String> {get}
 }
 
-class BaseViewModel: BaseViewModelType {
+open class BaseViewModel: BaseViewModelType {
 
     // input
-    let viewDidLoad = PublishSubject<Void>()
-    let viewDidDeallocate = PublishSubject<Void>()
-    let viewWillAppear = PublishSubject<Bool>()
+    open let viewDidLoad = PublishSubject<Void>()
+    open let viewDidDeallocate = PublishSubject<Void>()
+    open let viewWillAppear = PublishSubject<Bool>()
     
     // output
-    var tableIsLoading = Variable<String>("")
-    var tableViewPlaceholderText = Driver<String>.empty()
+    open var tableIsLoading = Variable<String>("")
+    open var tableViewPlaceholderText = Driver<String>.empty()
     
     // Variables
-    let dBag:DisposeBag = DisposeBag()
+    open let dBag:DisposeBag = DisposeBag()
     
     /// Returns an instant from MiniCashViewModel
-    init() {
+    public init() {
         tableViewPlaceholderText = tableIsLoading.asObservable().asDriver(onErrorJustReturn: "")
     }
     
-    func placeholderTextBaseOn<T:Any>(triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
+    open func placeholderTextBaseOn<T:Any>(triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
         viewWillAppear.asObservable().subscribe(onNext: {[weak self] (_) in
             self?.tableIsLoading.value = NSLocalizedString("Loading", comment: "")
         }).addDisposableTo(dBag)

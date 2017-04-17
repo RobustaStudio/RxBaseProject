@@ -11,13 +11,14 @@ import ObjectMapper
 
 let MINICASH_DATE_FORMAT_0 = "YYYY-MM-dd HH:mm:ss"
 let MINICASH_DATE_FORMAT_1 = "YYYY-MM-dd HH:mm:ss.S"
-class MiniCashModel: BaseModel {
+
+public class MiniCashModel: BaseModel {
     
-    var createdAt:Date?
-    var updatedAt:Date?
-    var createdAtString:String?
+    public var createdAt:Date?
+    public var updatedAt:Date?
+    public var createdAtString:String?
     
-    override func mapping(map: Map) {
+    override public func mapping(map: Map) {
         super.mapping(map: map)
         createdAtString <- map["created_at"]
         createdAt <- (map["created_at"],CustomDateFormatTransform(formatString: MINICASH_DATE_FORMAT_0))

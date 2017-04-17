@@ -10,39 +10,39 @@ import UIKit
 import RxSwift
 import Then
 
-class MiniCashViewController: UIViewController {
+open class BaseViewController: UIViewController {
 
-    var disposeBag = DisposeBag()
+    open var disposeBag = DisposeBag()
     
     //MARK:- Lifecycle
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         configureRx()
         
         self.view.endEditing(true)
         self.rx.viewWillDisappear.asDriver(onErrorJustReturn: false).drive(onNext: { (_) in
-            BaseAppDelegate.dismissLoadingProgress()
+            AppDelegate.dismissLoadingProgress()
         }).addDisposableTo(self.disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.endEditing(true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
     //MARK:- View Configuration Managment functions
 
     /// To be overriden in subclasses for configuring ViewController Views
-    func configureView() {}
+    open func configureView() {}
     
     /// To be overriden in subclasses for configuring ViewController RxData
-    func configureRx() {}
+    open func configureRx() {}
     
     //MARK:- Navigation
     
@@ -52,7 +52,7 @@ class MiniCashViewController: UIViewController {
     ///   - view: desired viewController
     ///   - animated: animated presentation or not
     ///   - completion: callBack block after done presentation
-    func presentOverCurrentView(_ view:UIViewController, _ animated:Bool = true, completion:(() -> Void)? = nil) {
+    open func presentOverCurrentView(_ view:UIViewController, _ animated:Bool = true, completion:(() -> Void)? = nil) {
         view.modalPresentationStyle = .overCurrentContext
         self.present(view, animated: animated, completion: completion)
     }

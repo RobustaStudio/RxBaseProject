@@ -25,10 +25,10 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ahmed93' => 'ahmed.moh.magdi93@gmail.com' }
-  s.source           = { :git => 'http://gitlab.robustastudio.com/ios/RxBaseProject', :tag => s.version.to_s }
+  s.source           = { :git => 'gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'RxBaseProject/Classes/**/*'
   
@@ -37,6 +37,33 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
+
+    s.subspec 'Core' do |ss|
+    ss.dependency 'RxSwift', '~> 3.3.1'
+    ss.dependency 'RxCocoa', '~> 3.3.1'
+    
+  end
+  
+  s.subspec 'Networking' do |ss|
+    ss.dependency 'Moya-ObjectMapper/RxSwift' #, :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
+    ss.dependency 'Moya', '~> 8.0.3'
+    ss.dependency 'Alamofire' , '~>4.4.0'
+    ss.dependency 'ReachabilitySwift', '~> 3.0.0'
+    ss.dependency 'Result' , '~> 3.2.1'
+  end
+
+  s.subspec 'Extra-Kit' do |ss|
+    ss.dependency 'DZNEmptyDataSet' , '~>1.8.1'
+    ss.dependency 'Kingfisher' , '~> 3.6.1'
+    ss.dependency 'ReusableKit' , '~> 1.1.0'
+    ss.dependency 'RxDataSources' , '~>1.0.3'
+    ss.dependency 'RxGesture' , '~> 1.0.0'
+    ss.dependency 'RxKeyboard' , '~>0.4.1'
+    ss.dependency 'RxOptional' , '~>3.1.3'
+    ss.dependency 'SVProgressHUD', '~>2.1.2'
+    ss.dependency 'SnapKit', '~>3.2.0'
+    ss.dependency 'SwiftMessages', '~> 3.3.3'
+    ss.dependency 'Then', '~>2.1.0'
+  end
 end

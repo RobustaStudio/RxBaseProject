@@ -8,9 +8,9 @@
 
 import Foundation
 
-class AppSetup {
+public class AppSetup {
     
-    static let shared = AppSetup()
+    public static let shared = AppSetup()
     
     private var dicData:[String: Any]!
     
@@ -29,55 +29,55 @@ class AppSetup {
     
     
     
-    var UsingAppToken:Bool {
+    public var UsingAppToken:Bool {
         return dicData["UsingAppToken"] as! Bool
     }
     
-    var UsingStaging:Bool {
+    public var UsingStaging:Bool {
         return dicData["UsingStaging"] as! Bool
     }
     
-    var version :String {
+    public var version :String {
         return dicData["version"] as! String
     }
     
-    var UsingStubbed:Bool {
+    public var UsingStubbed:Bool {
         return dicData["UsingStubbed"] as! Bool
     }
     
-    var AllowRefreshToken:Bool {
+    public var AllowRefreshToken:Bool {
         return dicData["AllowRefreshToken"] as! Bool
     }
     
-    var AppSecurity:String {
+    public var AppSecurity:String {
         return dicData["AppSecurity"] as! String
     }
     
-    var clientId:String {
+    public var clientId:String {
         return dicData["clientId"]as! String
     }
     
-    var clientSecret:String {
+    public var clientSecret:String {
         return dicData["clientSecret"]as! String
     }
     
-    var AppToken:String {
+    public var AppToken:String {
         return dicData["AppToken"]as! String
     }
     
-    var BaseURLs:String {
+    public var BaseURLs:String {
         return dicData["BaseURLs"]as! String
     }
     
-    var StagingURL:String {
+    public var StagingURL:String {
         return dicData["StagingURL"]as! String
     }
     
-    var ProductionURL:String {
+    public var ProductionURL:String {
         return dicData["ProductionURL"]as! String
     }
     
-    var ImageURLSuffix:String {
+    public var ImageURLSuffix:String {
         return dicData["ImageURLSuffix"]as! String
     }
 }

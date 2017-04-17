@@ -10,14 +10,14 @@ import Foundation
 import ObjectMapper
 import RxSwift
 
-class UserModel: MiniCashModel {
-    static var sharedObservable:Variable<UserModel?> = Variable<UserModel?>(nil)
+public class UserModel: MiniCashModel {
+    public static var sharedObservable:Variable<UserModel?> = Variable<UserModel?>(nil)
     
-    var accessToken:TokenModel? {
+    public var accessToken:TokenModel? {
         return TokenModel.shared
     }
     
-    static var shared:UserModel? {
+    public static var shared:UserModel? {
         guard let me = UserModel.getStoredObject(forKey: "me") as? UserModel else {
             return nil
         }
@@ -27,16 +27,16 @@ class UserModel: MiniCashModel {
         return me
     }
     
-    override func mapping(map: Map) {
+   public  override func mapping(map: Map) {
         super.mapping(map: map)
     }
     
-    func save() {
+    public func save() {
         self.store(self, withKey: "me")
         UserModel.sharedObservable.value = self
     }
     
-    static func invalidate() {
+    public static func invalidate() {
         TokenModel.deleteObject(forKey: "me")
     }
 }

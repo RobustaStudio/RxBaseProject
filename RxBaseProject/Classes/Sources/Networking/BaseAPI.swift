@@ -19,52 +19,54 @@ protocol BaseType {
     var addAppAuth: Bool { get }
 }
 
-enum BaseAPI {}
+public enum BaseAPI {
+    case xx()
+}
 
 extension BaseAPI: TargetType, AccessTokenAuthorizable, BaseType {
-    var path: String {
+    public var path: String {
         switch self {
         default:
             return ""
         }
     }
     
-    var parameters: [String : Any]? {
+    public var parameters: [String : Any]? {
         switch self {
         default:
             return nil
         }
     }
     
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         default:
             return .get
         }
     }
     
-    var sampleData: Data {
+    public var sampleData: Data {
         switch self {
         default:
             return Data(base64Encoded: "{\"status\":{ \"code\": 200, \"message\": \"success\" }")!
         }
     }
     
-    var shouldAuthorize: Bool {
+    public var shouldAuthorize: Bool {
         switch self {
         default:
             return true
         }
     }
     
-    var addAppAuth: Bool {
+    public var addAppAuth: Bool {
         switch self {
         default:
             return false
         }
     }
     
-    var multipartBody: [Moya.MultipartFormData]? {
+    public var multipartBody: [Moya.MultipartFormData]? {
         switch self {
 //        case .updateMyImage(let profileImage):
 //            guard let data = UIImageJPEGRepresentation(profileImage, 0.1) else { return nil }
@@ -83,7 +85,7 @@ extension BaseAPI: TargetType, AccessTokenAuthorizable, BaseType {
     }
     
     var base:String {return AppSetup.shared.UsingStaging ? AppSetup.shared.StagingURL : AppSetup.shared.ProductionURL }
-    var baseURL: URL {
+    public var baseURL: URL {
         switch self {
         default:
             return URL(string: base)!
