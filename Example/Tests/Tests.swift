@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import RxBaseProject
+//import RxBaseProject
 
 class Tests: XCTestCase {
     

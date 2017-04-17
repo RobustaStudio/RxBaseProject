@@ -1,5 +1,70 @@
 PODS:
-  - RxBaseProject (0.1.0)
+  - Alamofire (4.4.0)
+  - DZNEmptyDataSet (1.8.1)
+  - Kingfisher (3.6.2)
+  - Moya (8.0.3):
+    - Moya/Core (= 8.0.3)
+  - Moya-ObjectMapper/Core (2.3.1):
+    - Moya (~> 8.0)
+    - ObjectMapper (~> 2.2)
+  - Moya-ObjectMapper/RxSwift (2.3.1):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift
+    - RxSwift (~> 3.1)
+  - Moya/Core (8.0.3):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.3):
+    - Moya/Core
+    - RxSwift (~> 3.0)
+  - ObjectMapper (2.2.5)
+  - ReachabilitySwift (3)
+  - Result (3.2.1)
+  - ReusableKit (1.1.0)
+  - RxBaseProject (0.1.0):
+    - RxBaseProject/Core (= 0.1.0)
+    - RxBaseProject/Extra-Kit (= 0.1.0)
+    - RxBaseProject/Networking (= 0.1.0)
+  - RxBaseProject/Core (0.1.0):
+    - RxCocoa (~> 3.3.1)
+    - RxSwift (~> 3.3.1)
+  - RxBaseProject/Extra-Kit (0.1.0):
+    - DZNEmptyDataSet (~> 1.8.1)
+    - Kingfisher (~> 3.6.1)
+    - ReusableKit (~> 1.1.0)
+    - RxDataSources (~> 1.0.3)
+    - RxGesture (~> 1.0.0)
+    - RxKeyboard (~> 0.4.1)
+    - RxOptional (~> 3.1.3)
+    - SnapKit (~> 3.2.0)
+    - SVProgressHUD (~> 2.1.2)
+    - SwiftMessages (~> 3.3.3)
+    - Then (~> 2.1.0)
+  - RxBaseProject/Networking (0.1.0):
+    - Alamofire (~> 4.4.0)
+    - Moya (~> 8.0.3)
+    - Moya-ObjectMapper/RxSwift
+    - ReachabilitySwift (~> 3.0.0)
+    - Result (~> 3.2.1)
+  - RxCocoa (3.3.1):
+    - RxSwift (~> 3.3)
+  - RxDataSources (1.0.3):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxGesture (1.0.0):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxKeyboard (0.4.1):
+    - RxCocoa (>= 3.0)
+    - RxSwift (>= 3.0)
+  - RxOptional (3.1.3):
+    - RxCocoa
+    - RxSwift
+  - RxSwift (3.3.1)
+  - SnapKit (3.2.0)
+  - SVProgressHUD (2.1.2)
+  - SwiftMessages (3.3.3)
+  - Then (2.1.0)
 
 DEPENDENCIES:
   - RxBaseProject (from `../`)
@@ -9,8 +74,27 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RxBaseProject: 3740203a4a85a33ec0263a23a51f17065acd470e
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
+  Moya-ObjectMapper: 952be2b261d38cf8d973b7e429708eb03d256e23
+  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  ReusableKit: 89e743a120bab0d95848bff27e481833c2768905
+  RxBaseProject: f7584dc4843fc2ac082d1fce2971af8365ee481f
+  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
+  RxGesture: df17ca8be513640294c544b3165875e91de665ec
+  RxKeyboard: 4046ecd1884a3bf0dacb823bd2ac8b00482d29ff
+  RxOptional: b97b59183af80d1e729ac9e51d09a10be668d6a8
+  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftMessages: '09cea3336e3fb63c3578983c8aac65acaa6d884a'
+  Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 55d45b0a108ea7ea99660cff2a1f866f24954cc1
+PODFILE CHECKSUM: fad9bf52315f9139ebf75ce0c493fdc3dafb9e0f
 
 COCOAPODS: 1.2.0

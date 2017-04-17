@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */; };
+		A7E1BFDD1E9D58C800ADFE30 /* Te.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E1BFDC1E9D58C800ADFE30 /* Te.swift */; };
 		ADEEE02BEBB631C8FF690B94 /* Pods_RxBaseProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +32,7 @@
 /* Begin PBXFileReference section */
 		2B6EAE07340038951DEF046E /* Pods-RxBaseProject_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Tests/Pods-RxBaseProject_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E268323C9F9022291B35788 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4E268323C9F9022291B35788 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RxBaseProject_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxBaseProject_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,10 +45,12 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
+		A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBaseProject.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/RxBaseProject-euvqiasqwlhcuhceyilatpbpurvu/Build/Products/Debug-iphonesimulator/RxBaseProject/RxBaseProject.framework"; sourceTree = "<group>"; };
+		A7E1BFDC1E9D58C800ADFE30 /* Te.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Te.swift; sourceTree = "<group>"; };
+		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
 		C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F53C8E47AACA684A521BE24B /* Pods-RxBaseProject_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Tests/Pods-RxBaseProject_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F5EB1371380337AF150DE920 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F5EB1371380337AF150DE920 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */,
 				0B0F43AE3C9EE78033D6EF7B /* Pods_RxBaseProject_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +77,7 @@
 		34D4AE7A23FA4D53C40101E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */,
 				8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */,
 				2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */,
 			);
@@ -108,6 +114,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				A7E1BFDC1E9D58C800ADFE30 /* Te.swift */,
 			);
 			name = "Example for RxBaseProject";
 			path = RxBaseProject;
@@ -215,10 +222,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AXBRK75K78;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AXBRK75K78;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -363,6 +372,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				A7E1BFDD1E9D58C800ADFE30 /* Te.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +506,9 @@
 			baseConfigurationReference = 739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AXBRK75K78;
 				INFOPLIST_FILE = RxBaseProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -510,7 +522,9 @@
 			baseConfigurationReference = C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AXBRK75K78;
 				INFOPLIST_FILE = RxBaseProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -523,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B6EAE07340038951DEF046E /* Pods-RxBaseProject_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = AXBRK75K78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -543,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F53C8E47AACA684A521BE24B /* Pods-RxBaseProject_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = AXBRK75K78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
