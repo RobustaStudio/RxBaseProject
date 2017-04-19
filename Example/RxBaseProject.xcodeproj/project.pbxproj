@@ -15,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */; };
-		A7E1BFDD1E9D58C800ADFE30 /* Te.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E1BFDC1E9D58C800ADFE30 /* Te.swift */; };
 		ADEEE02BEBB631C8FF690B94 /* Pods_RxBaseProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBaseProject.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/RxBaseProject-euvqiasqwlhcuhceyilatpbpurvu/Build/Products/Debug-iphonesimulator/RxBaseProject/RxBaseProject.framework"; sourceTree = "<group>"; };
-		A7E1BFDC1E9D58C800ADFE30 /* Te.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Te.swift; sourceTree = "<group>"; };
 		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
 		C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F53C8E47AACA684A521BE24B /* Pods-RxBaseProject_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Tests/Pods-RxBaseProject_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				A7E1BFDC1E9D58C800ADFE30 /* Te.swift */,
 			);
 			name = "Example for RxBaseProject";
 			path = RxBaseProject;
@@ -223,7 +220,7 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = AXBRK75K78;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0830;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -372,7 +369,6 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				A7E1BFDD1E9D58C800ADFE30 /* Te.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +502,7 @@
 			baseConfigurationReference = 739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AXBRK75K78;
 				INFOPLIST_FILE = RxBaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -513,6 +510,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -522,6 +521,7 @@
 			baseConfigurationReference = C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = AXBRK75K78;
 				INFOPLIST_FILE = RxBaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -529,6 +529,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

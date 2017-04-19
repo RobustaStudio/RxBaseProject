@@ -12,7 +12,7 @@
     "ahmed93": "ahmed.moh.magdi93@gmail.com"
   },
   "source": {
-    "git": "gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git",
+    "git": "http://gitlab.robustastudio.com/ios/RxBaseProject.git",
     "tag": "0.1.0"
   },
   "platforms": {

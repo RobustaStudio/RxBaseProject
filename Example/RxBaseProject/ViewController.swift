@@ -9,7 +9,18 @@
 import UIKit
 import RxBaseProject
 
-class ViewController: BaseViewController {
+class ViewController: BaseViewController, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
 
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+    }
+ 
+    
+    
+    
 }
 

@@ -10,41 +10,67 @@ import UIKit
 import DZNEmptyDataSet
 import RxSwift
 
-class PlaceholderTableView: UITableView, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+//class PlaceholderTableView: UITableView, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+//    
+//    var placeholderText:String = NSLocalizedString("", comment: "") {
+//        didSet {
+//            self.reloadEmptyDataSet()
+//        }
+//    }
+//
+//    let disposeB = DisposeBag()
+//    
+//    override init(frame: CGRect, style: UITableViewStyle) {
+//        super.init(frame: frame, style: style)
+//        configureRx()
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        configureRx()
+//    }
+//    
+//    public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+//        let attributedString = NSMutableAttributedString(string: placeholderText)
+//        return attributedString
+//    }
+//    
+//    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+//        return true
+//    }
+//    
+//    private func configureRx() {
+//        self.emptyDataSetSource = self
+//        self.emptyDataSetDelegate = self
+//        
+//        
+//    }
+//}
+
+
+
+extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    var placeholderText:String = NSLocalizedString("", comment: "") {
+    var placeholderText:String {
         didSet {
             self.reloadEmptyDataSet()
         }
     }
     
-    let disposeB = DisposeBag()
     
-    override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: style)
-        configureRx()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureRx()
-    }
     
     public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributedString = NSMutableAttributedString(string: placeholderText)
+        let attributedString = NSMutableAttributedString(string: "This is a test")
         return attributedString
     }
     
-    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+    public func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
     
-    private func configureRx() {
+    func configureRx() {
         self.emptyDataSetSource = self
         self.emptyDataSetDelegate = self
-        
-        
+
     }
 }
-
-

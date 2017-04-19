@@ -83,7 +83,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   ReusableKit: 89e743a120bab0d95848bff27e481833c2768905
-  RxBaseProject: f7584dc4843fc2ac082d1fce2971af8365ee481f
+  RxBaseProject: d12cbee5a06b060e96c29190db1d8890f11e3d6c
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
   RxGesture: df17ca8be513640294c544b3165875e91de665ec
