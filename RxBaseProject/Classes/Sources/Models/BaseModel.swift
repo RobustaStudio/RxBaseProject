@@ -55,25 +55,21 @@ open class BaseModel: NSObject, Mappable, NSCoding {
         userDefaults.removeObject(forKey: key)
     }
     
-//
-//    // DeepLinking
-//    
-//    func deepLinkDictionary() -> [AnyHashable: Any] {
-//        return [AnyHashable: Any]()
-//    }
-//    
-//    func deeplinkURLParamsString(prefixURL:String) -> URLComponents? {
-//        let dictionary = deepLinkDictionary()
-//        if dictionary.count > 0 {
-//            
-//            let params = dictionary.map {(key, value) in URLQueryItem(name: key as! String, value: "\(value)")}
-//            var url = URLComponents(string: prefixURL)
-//            url?.queryItems = params
-//            
-//            print("DeepLink URL: \(url)")
-//            return url
-//        }else {
-//            return nil
-//        }
-//    }
+
+    // DeepLinking
+    func deepLinkDictionary() -> [AnyHashable: Any] {
+        return [AnyHashable: Any]()
+    }
+    
+    func deeplinkURLParamsString(prefixURL:String) -> URLComponents? {
+        let dictionary = deepLinkDictionary()
+        if dictionary.count > 0 {
+            let params = dictionary.map {(key, value) in URLQueryItem(name: key as! String, value: "\(value)")}
+            var url = URLComponents(string: prefixURL)
+            url?.queryItems = params
+            return url
+        }else {
+            return nil
+        }
+    }
 }

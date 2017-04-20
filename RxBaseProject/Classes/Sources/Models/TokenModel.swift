@@ -15,7 +15,7 @@ private extension Date {
     }
 }
 
-public class TokenModel: MiniCashModel {
+public class TokenModel: BaseModel {
     
     public var accessToken: String?
     public var tokenType: String?

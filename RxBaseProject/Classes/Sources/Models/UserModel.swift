@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 import RxSwift
 
-public class UserModel: MiniCashModel {
+public class UserModel: BaseModel {
     public static var sharedObservable:Variable<UserModel?> = Variable<UserModel?>(nil)
     
     public var accessToken:TokenModel? {

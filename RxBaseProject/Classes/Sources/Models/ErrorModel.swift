@@ -11,7 +11,6 @@ import ObjectMapper
 
 
 public class ErrorModel: BaseModel {
-    
     public var error:String?
     public var errorDetails:String?
     
@@ -19,6 +18,4 @@ public class ErrorModel: BaseModel {
         error <- map["error"]
         errorDetails <- map["error_description"]
     }
-    
-    
 }

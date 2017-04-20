@@ -19,7 +19,11 @@ extension String {
         return result
     }
     
-//    /// Adding underline to current string
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    //    /// Adding underline to current string
 //    ///
 //    /// - Returns: underlined attributedString
 //    func underlineString() -> NSAttributedString {

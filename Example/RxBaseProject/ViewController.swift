@@ -17,6 +17,8 @@ class ViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         tableView.delegate = self
+        
+        tableView.placeholderText = "testing"
     }
  
     
