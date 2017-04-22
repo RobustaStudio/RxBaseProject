@@ -54,7 +54,7 @@ class ReachabilityManager {
         view = MessageView.viewFromNib(layout: .StatusLine)
         view.configureTheme(.error)
         view.configureDropShadow()
-        view.configureContent(body: "Unable to reach internet, retrying")
+        view.configureContent(body: "Unable to reach internet, retrying".localized)
         
         var config = SwiftMessages.defaultConfig
         config.presentationStyle = .top
@@ -65,7 +65,7 @@ class ReachabilityManager {
         config.preferredStatusBarStyle = .lightContent
 
         self.reachability.whenReachable = { _ in
-            print("reached")
+            print("reachable")
             SwiftMessages.hide()
             DispatchQueue.main.async { self._reach.onNext(true) }
         }

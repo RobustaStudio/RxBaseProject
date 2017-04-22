@@ -25,7 +25,7 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ahmed93' => 'ahmed.moh.magdi93@gmail.com' }
-  s.source           = { :git => 'http://gitlab.robustastudio.com/ios/RxBaseProject.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://gitlab.robustastudio.com/ios/RxBaseProject.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
@@ -39,10 +39,9 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
 
-    s.subspec 'Core' do |ss|
+  s.subspec 'Core' do |ss|
     ss.dependency 'RxSwift', '~> 3.3.1'
-    ss.dependency 'RxCocoa', '~> 3.3.1'
-    
+    ss.dependency 'RxCocoa', '~> 3.3.1'  
   end
   
   s.subspec 'Networking' do |ss|
@@ -59,7 +58,7 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
     ss.dependency 'ReusableKit' , '~> 1.1.0'
     ss.dependency 'RxDataSources' , '~>1.0.3'
     ss.dependency 'RxGesture' , '~> 1.0.0'
-    ss.dependency 'RxKeyboard' , '~>0.4.1'
+    ss.dependency 'RxKeyboard' , '~>0.4'
     ss.dependency 'RxOptional' , '~>3.1.3'
     ss.dependency 'SVProgressHUD', '~>2.1.2'
     ss.dependency 'SnapKit', '~>3.2.0'

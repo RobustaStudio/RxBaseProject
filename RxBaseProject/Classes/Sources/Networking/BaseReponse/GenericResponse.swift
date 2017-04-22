@@ -49,7 +49,7 @@ public class GenericError: NSObject {
             }else {
                 self.errorMessage = response.description
             }
-            APIManager.shared.isLoggedIn(bool: false)
+            BaseAPIManager.shared.isLoggedIn(bool: false)
             return
         case 500...599:
             errorMessage = GenericError.ErrorMessage

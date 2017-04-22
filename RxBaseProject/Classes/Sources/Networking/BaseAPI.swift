@@ -20,7 +20,7 @@ protocol BaseType {
 }
 
 public enum BaseAPI {
-    case xx()
+    case refreshToken()
 }
 
 extension BaseAPI: TargetType, AccessTokenAuthorizable, BaseType {

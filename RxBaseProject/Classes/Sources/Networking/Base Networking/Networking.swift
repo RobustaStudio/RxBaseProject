@@ -69,7 +69,7 @@ struct Networking: NetworkingType {
 
         let newTokenRequest:Observable<String?> = Observable.empty()
         
-//        let newTokenRequest = self.provider.request(BaseAPI.)
+//        let newTokenRequest = self.provider.request(BaseAPI.refreshToken())
 //            .filterSuccessfulStatusCodes()
 //            .mapJSON()
 //            .map { element -> (token: String?, expiry: String?) in

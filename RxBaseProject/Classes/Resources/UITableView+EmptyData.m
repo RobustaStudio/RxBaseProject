@@ -33,8 +33,8 @@
         }
         
         
-        originalSelector = @selector(initWithFrame:);
-        swizzledSelector = @selector(xxx_initWithFrame:);
+        originalSelector = @selector(initWithFrame:style:);
+        swizzledSelector = @selector(xxx_initWithFrame:style:);
         originalMethod = class_getInstanceMethod(class, originalSelector);
         swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
         

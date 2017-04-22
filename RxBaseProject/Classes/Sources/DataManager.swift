@@ -8,12 +8,11 @@
 
 import UIKit
 
-public final class DateManager: NSObject {
+public final class DataManager: NSObject {
     fileprivate override init() { super.init() }
-    
-    
+
     /// Formatter With formate yyyy-MM-dd HH:mm:ss
-    static var SharedDateFormatter: DateFormatter = {
+    static var sharedDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
@@ -21,28 +20,28 @@ public final class DateManager: NSObject {
     }()
     
     /// Formatter With formate yyyy-MM-DD
-    static var SharedFormatter: DateFormatter = {
+    static var sharedFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }()
     
     /// Formatter With formate MMMM, DD, yyyy
-    static var SharedSMSFormatter: DateFormatter = {
+    static var sharedSMSFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM, dd, yyyy"
         return dateFormatter
     }()
     
     /// Formatter With formate yyyy-MM-DD
-    static var SharedDOBFormatter: DateFormatter = {
+    static var sharedDOBFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }()
     
     /// Formatter With formate DD MMMM yyyy
-    static var SharedCampaignRecipientsFormatter: DateFormatter = {
+    static var sharedCampaignRecipientsFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
 //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
@@ -50,14 +49,14 @@ public final class DateManager: NSObject {
     }()
     
     /// Formatter With formate DD/MM/yyyy
-    static var SharedDefaultFormatter: DateFormatter = {
+    static var sharedDefaultFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter
     }()
     
     /// Formatter With formate MM/DD/yyyy
-    static var SharedDefaultFormatter2: DateFormatter = {
+    static var sharedDefaultFormatter2: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter
@@ -69,29 +68,42 @@ public final class DateManager: NSObject {
         formatter.numberStyle = .decimal
         return formatter
     }()
-    
-    static func FormatInt(_ number:Int) -> String {
-        let _number = NSNumber(value: number)
+}
+
+fileprivate func FormatNumber(_ number:NSNumber?) -> String {
+    guard let num = number else {return ""}
+    guard let result = DataManager.sharedNumberDecimalFormatter.string(from: num) else {return ""}
+    return result
+}
+
+//extension NSNumber {
+//    static func Format() -> String {
+//        if self == nil {return ""}
+//        guard let result = DataManager.sharedNumberDecimalFormatter.string(from: self) else {return ""}
+//        return result
+//    }
+//}
+
+extension Int {
+    public func format() -> String {
+        let _number = NSNumber(value: self)
         return FormatNumber(_number)
-    }
-    
-    static func FormatLong(_ number:CLongLong) -> String {
-        let _number = NSNumber(value: number)
-        return FormatNumber(_number)
-    }
-    
-    static func FormatDouble(_ number:Double) -> String {
-        let _number = NSNumber(value: number)
-        return FormatNumber(_number)
-    }
-    
-    static func FormatNumber(_ number:NSNumber?) -> String {
-        guard let num = number else {return ""}
-        guard let result = sharedNumberDecimalFormatter.string(from: num) else {return ""}
-        return result
     }
 }
 
+extension CLongLong {
+    public func format() -> String {
+        let _number = NSNumber(value: self)
+        return FormatNumber(_number)
+    }
+}
+
+extension Double {
+    public func format() -> String {
+        let _number = NSNumber(value: self)
+        return FormatNumber(_number)
+    }
+}
 
 extension NumberFormatter {
     func forceEnglishString(from number:NSNumber?) -> String? {

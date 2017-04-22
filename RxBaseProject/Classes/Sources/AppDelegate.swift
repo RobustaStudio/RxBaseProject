@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 public class AppDelegate: UIResponder, UIApplicationDelegate {
 
     public var window: UIWindow?
-
+    public var disposeBag = DisposeBag()
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        if BaseAPIManager.isValidSession {
+//            login()
+//        }else {
+//            notLoggedIn()
+//        }
+//        
+//        BaseAPIManager.shared.shouldForceLoggout.drive(onNext: { valid in
+//            if valid {
+//                self.forceLogOut(message: nil)
+//            }
+//        }).addDisposableTo(disposeBag)
+        
         return true
     }
 

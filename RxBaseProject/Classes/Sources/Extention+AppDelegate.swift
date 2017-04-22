@@ -10,13 +10,20 @@ import UIKit
 import SVProgressHUD
 
 extension AppDelegate {
-    public func login() {
-        APIManager.shared.isLoggedIn(bool: true)
+    
+    public func notLoggedIn() {
+        BaseAPIManager.shared.isLoggedIn(bool: false)
     }
+    
+    public func login() {
+        BaseAPIManager.shared.isLoggedIn(bool: true)
+    }
+    
     public func logout() {
         TokenModel.invalidate()
-        APIManager.shared.isLoggedIn(bool: false)
+        BaseAPIManager.shared.isLoggedIn(bool: false)
     }
+    
     public func forceLogOut(message:String?) {
         self.logout()
     }

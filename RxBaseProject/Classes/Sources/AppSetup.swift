@@ -26,9 +26,6 @@ public class AppSetup {
         }
     }
     
-    
-    
-    
     public var UsingAppToken:Bool {
         return dicData["UsingAppToken"] as! Bool
     }

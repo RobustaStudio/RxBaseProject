@@ -12,7 +12,7 @@
     "ahmed93": "ahmed.moh.magdi93@gmail.com"
   },
   "source": {
-    "git": "http://gitlab.robustastudio.com/ios/RxBaseProject.git",
+    "git": "https://gitlab.robustastudio.com/ios/RxBaseProject.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -71,7 +71,7 @@
           "~> 1.0.0"
         ],
         "RxKeyboard": [
-          "~>0.4.1"
+          "~>0.4"
         ],
         "RxOptional": [
           "~>3.1.3"
