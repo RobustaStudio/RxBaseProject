@@ -12,7 +12,7 @@
     "ahmed93": "ahmed.moh.magdi93@gmail.com"
   },
   "source": {
-    "git": "https://gitlab.robustastudio.com/ios/RxBaseProject.git",
+    "git": "gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -20,72 +20,57 @@
   },
   "source_files": "RxBaseProject/Classes/**/*",
   "frameworks": "UIKit",
-  "subspecs": [
-    {
-      "name": "Core",
-      "dependencies": {
-        "RxSwift": [
-          "~> 3.3.0"
-        ],
-        "RxCocoa": [
-          "~> 3.3.0"
-        ]
-      }
-    },
-    {
-      "name": "Networking",
-      "dependencies": {
-        "Moya-ObjectMapper/RxSwift": [
+  "dependencies": {
+    "RxSwift": [
+      "~> 3.3.1"
+    ],
+    "RxCocoa": [
+      "~> 3.3.1"
+    ],
+    "Moya-ObjectMapper/RxSwift": [
 
-        ],
-        "Moya": [
-          "~> 8.0.3"
-        ],
-        "Alamofire": [
-          "~>4.4.0"
-        ],
-        "ReachabilitySwift": [
-          "~> 3.0.0"
-        ],
-        "Result": [
-          "~> 3.2.1"
-        ]
-      }
-    },
-    {
-      "name": "Extra-Kit",
-      "dependencies": {
-        "DZNEmptyDataSet": [
-          "~>1.8.1"
-        ],
-        "Kingfisher": [
-          "~> 3.6.1"
-        ],
-        "ReusableKit": [
-          "~> 1.1.0"
-        ],
-        "RxDataSources": [
-          "~>1.0.3"
-        ],
-        "RxGesture": [
-          "~> 1.0.0"
-        ],
-        "RxOptional": [
-          "~>3.1.3"
-        ],
-        "SVProgressHUD": [
-          "~>2.1.2"
-        ],
-        "SnapKit": [
-          "~>3.2.0"
-        ],
-        "SwiftMessages": [
-          "~> 3.3.3"
-        ],
-        "Then": [
-          "~>2.1.0"
-        ]
-      }
-    }
-  ]
+    ],
+    "Moya": [
+      "~> 8.0.3"
+    ],
+    "Alamofire": [
+      "~>4.4.0"
+    ],
+    "ReachabilitySwift": [
+      "~> 3.0.0"
+    ],
+    "Result": [
+      "~> 3.2.1"
+    ],
+    "DZNEmptyDataSet": [
+      "~>1.8.1"
+    ],
+    "Kingfisher": [
+      "~> 3.6.1"
+    ],
+    "ReusableKit": [
+      "~> 1.1.0"
+    ],
+    "RxDataSources": [
+      "~>1.0.3"
+    ],
+    "RxGesture": [
+      "~> 1.0.0"
+    ],
+    "RxOptional": [
+      "~>3.1.3"
+    ],
+    "SVProgressHUD": [
+      "~>2.1.2"
+    ],
+    "SnapKit": [
+      "~>3.2.0"
+    ],
+    "SwiftMessages": [
+      "~> 3.3.3"
+    ],
+    "Then": [
+      "~>2.1.0"
+    ]
+  }
 }

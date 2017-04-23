@@ -39,30 +39,30 @@ RxBaseProject is a kickstarting project for RxApplications, no need to keep repe
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
 
-  s.subspec 'Core' do |ss|
-    ss.dependency 'RxSwift', '~> 3.3.0'
-    ss.dependency 'RxCocoa', '~> 3.3.0'  
-  end
+ # s.subspec 'Core' do |ss|
+    s.dependency 'RxSwift', '~> 3.3.1'
+    s.dependency 'RxCocoa', '~> 3.3.1'  
+  #end
   
-  s.subspec 'Networking' do |ss|
-    ss.dependency 'Moya-ObjectMapper/RxSwift' #, :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
-    ss.dependency 'Moya', '~> 8.0.3'
-    ss.dependency 'Alamofire' , '~>4.4.0'
-    ss.dependency 'ReachabilitySwift', '~> 3.0.0'
-    ss.dependency 'Result' , '~> 3.2.1'
-  end
+  #s.subspec 'Networking' do |ss|
+    s.dependency 'Moya-ObjectMapper/RxSwift' #, :git => 'https://github.com/ivanbruel/Moya-ObjectMapper'
+    s.dependency 'Moya', '~> 8.0.3'
+    s.dependency 'Alamofire' , '~>4.4.0'
+    s.dependency 'ReachabilitySwift', '~> 3.0.0'
+    s.dependency 'Result' , '~> 3.2.1'
+  #end
 
-  s.subspec 'Extra-Kit' do |ss|
-    ss.dependency 'DZNEmptyDataSet' , '~>1.8.1'
-    ss.dependency 'Kingfisher' , '~> 3.6.1'
-    ss.dependency 'ReusableKit' , '~> 1.1.0'
-    ss.dependency 'RxDataSources' , '~>1.0.3'
-    ss.dependency 'RxGesture' , '~> 1.0.0'
-    # ss.dependency 'RxKeyboard' , '~>0.4'
-    ss.dependency 'RxOptional' , '~>3.1.3'
-    ss.dependency 'SVProgressHUD', '~>2.1.2'
-    ss.dependency 'SnapKit', '~>3.2.0'
-    ss.dependency 'SwiftMessages', '~> 3.3.3'
-    ss.dependency 'Then', '~>2.1.0'
-  end
+  #s.subspec 'Extra-Kit' do |ss|
+    s.dependency 'DZNEmptyDataSet' , '~>1.8.1'
+    s.dependency 'Kingfisher' , '~> 3.6.1'
+    s.dependency 'ReusableKit' , '~> 1.1.0'
+    s.dependency 'RxDataSources' , '~>1.0.3'
+    s.dependency 'RxGesture' , '~> 1.0.0'
+    # s.dependency 'RxKeyboard' , '~>0.4'
+    s.dependency 'RxOptional' , '~>3.1.3'
+    s.dependency 'SVProgressHUD', '~>2.1.2'
+    s.dependency 'SnapKit', '~>3.2.0'
+    s.dependency 'SwiftMessages', '~> 3.3.3'
+    s.dependency 'Then', '~>2.1.0'
+  #end
 end
