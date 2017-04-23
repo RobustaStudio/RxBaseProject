@@ -1,12 +1,9 @@
 use_frameworks!
 platform :ios, '9.0'
-
 target 'RxBaseProject_Example' do
   pod 'RxBaseProject', :path => '../'
-
   target 'RxBaseProject_Tests' do
     inherit! :search_paths
-
     
   end
 end
