@@ -8,16 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0B0F43AE3C9EE78033D6EF7B /* Pods_RxBaseProject_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */; };
-		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
-		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A720D5181EAE94D80062FDE3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720D5171EAE94D80062FDE3 /* APIManager.swift */; };
-		A720D51A1EAE94FC0062FDE3 /* MiniCashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */; };
-		A75773EF1EB089ED004FC921 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773EE1EB089ED004FC921 /* News.swift */; };
-		A75773F11EB08CD0004FC921 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F01EB08CD0004FC921 /* ViewModel.swift */; };
+		A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F31EB0A10A004FC921 /* AppDelegate.swift */; };
+		A75774081EB0A10A004FC921 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A75773F41EB0A10A004FC921 /* Info.plist */; };
+		A75774091EB0A10A004FC921 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75773F61EB0A10A004FC921 /* Images.xcassets */; };
+		A757740A1EB0A10A004FC921 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F91EB0A10A004FC921 /* BaseModel.swift */; };
+		A757740B1EB0A10A004FC921 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FA1EB0A10A004FC921 /* News.swift */; };
+		A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FC1EB0A10A004FC921 /* APIManager.swift */; };
+		A757740D1EB0A10A004FC921 /* MiniCashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */; };
+		A757740E1EB0A10A004FC921 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FF1EB0A10A004FC921 /* ViewController.swift */; };
+		A757740F1EB0A10A004FC921 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774011EB0A10A004FC921 /* ViewModel.swift */; };
+		A75774101EB0A10A004FC921 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75774031EB0A10A004FC921 /* LaunchScreen.xib */; };
+		A75774111EB0A10A004FC921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75774051EB0A10A004FC921 /* Main.storyboard */; };
 		A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */; };
 		ADEEE02BEBB631C8FF690B94 /* Pods_RxBaseProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -37,21 +39,22 @@
 		2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E268323C9F9022291B35788 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RxBaseProject_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxBaseProject_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* RxBaseProject_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxBaseProject_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A720D5171EAE94D80062FDE3 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCashAPI.swift; sourceTree = "<group>"; };
-		A75773EE1EB089ED004FC921 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		A75773F01EB08CD0004FC921 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A75773F31EB0A10A004FC921 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A75773F41EB0A10A004FC921 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A75773F61EB0A10A004FC921 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A75773F91EB0A10A004FC921 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		A75773FA1EB0A10A004FC921 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		A75773FC1EB0A10A004FC921 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCashAPI.swift; sourceTree = "<group>"; };
+		A75773FF1EB0A10A004FC921 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A75774011EB0A10A004FC921 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A75774041EB0A10A004FC921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A75774061EB0A10A004FC921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBaseProject.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/RxBaseProject-euvqiasqwlhcuhceyilatpbpurvu/Build/Products/Debug-iphonesimulator/RxBaseProject/RxBaseProject.framework"; sourceTree = "<group>"; };
 		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
 		C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,8 +96,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				A75773F21EB0A10A004FC921 /* RxBaseProject */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for RxBaseProject */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				C4BD4C7C23BE6AE30AC4C430 /* Pods */,
@@ -109,32 +112,6 @@
 				607FACE51AFB9204008FA782 /* RxBaseProject_Tests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		607FACD21AFB9204008FA782 /* Example for RxBaseProject */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
-				A720D5171EAE94D80062FDE3 /* APIManager.swift */,
-				A75773EE1EB089ED004FC921 /* News.swift */,
-				A75773F01EB08CD0004FC921 /* ViewModel.swift */,
-			);
-			name = "Example for RxBaseProject";
-			path = RxBaseProject;
-			sourceTree = "<group>";
-		};
-		607FACD31AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */,
-				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACE81AFB9204008FA782 /* Tests */ = {
@@ -162,6 +139,80 @@
 				4E268323C9F9022291B35788 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		A75773F21EB0A10A004FC921 /* RxBaseProject */ = {
+			isa = PBXGroup;
+			children = (
+				A75773F31EB0A10A004FC921 /* AppDelegate.swift */,
+				A75773F41EB0A10A004FC921 /* Info.plist */,
+				A75773F71EB0A10A004FC921 /* Sources */,
+				A75773F51EB0A10A004FC921 /* Resources */,
+			);
+			path = RxBaseProject;
+			sourceTree = "<group>";
+		};
+		A75773F51EB0A10A004FC921 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A75773F61EB0A10A004FC921 /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A75773F71EB0A10A004FC921 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A75773F81EB0A10A004FC921 /* Models */,
+				A75773FB1EB0A10A004FC921 /* Networking */,
+				A75773FE1EB0A10A004FC921 /* ViewController */,
+				A75774001EB0A10A004FC921 /* ViewModels */,
+				A75774021EB0A10A004FC921 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A75773F81EB0A10A004FC921 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A75773F91EB0A10A004FC921 /* BaseModel.swift */,
+				A75773FA1EB0A10A004FC921 /* News.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A75773FB1EB0A10A004FC921 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A75773FC1EB0A10A004FC921 /* APIManager.swift */,
+				A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A75773FE1EB0A10A004FC921 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A75773FF1EB0A10A004FC921 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A75774001EB0A10A004FC921 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A75774011EB0A10A004FC921 /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A75774021EB0A10A004FC921 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A75774031EB0A10A004FC921 /* LaunchScreen.xib */,
+				A75774051EB0A10A004FC921 /* Main.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C4BD4C7C23BE6AE30AC4C430 /* Pods */ = {
@@ -266,9 +317,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				A75774081EB0A10A004FC921 /* Info.plist in Resources */,
+				A75774101EB0A10A004FC921 /* LaunchScreen.xib in Resources */,
+				A75774091EB0A10A004FC921 /* Images.xcassets in Resources */,
+				A75774111EB0A10A004FC921 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,12 +431,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A720D5181EAE94D80062FDE3 /* APIManager.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				A720D51A1EAE94FC0062FDE3 /* MiniCashAPI.swift in Sources */,
-				A75773EF1EB089ED004FC921 /* News.swift in Sources */,
-				A75773F11EB08CD0004FC921 /* ViewModel.swift in Sources */,
-				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				A757740E1EB0A10A004FC921 /* ViewController.swift in Sources */,
+				A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */,
+				A757740B1EB0A10A004FC921 /* News.swift in Sources */,
+				A757740D1EB0A10A004FC921 /* MiniCashAPI.swift in Sources */,
+				A757740A1EB0A10A004FC921 /* BaseModel.swift in Sources */,
+				A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */,
+				A757740F1EB0A10A004FC921 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,20 +460,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
+		A75774031EB0A10A004FC921 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDF1AFB9204008FA782 /* Base */,
+				A75774041EB0A10A004FC921 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		A75774051EB0A10A004FC921 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A75774061EB0A10A004FC921 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -554,6 +607,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B6EAE07340038951DEF046E /* Pods-RxBaseProject_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = AXBRK75K78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -575,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F53C8E47AACA684A521BE24B /* Pods-RxBaseProject_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = AXBRK75K78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
