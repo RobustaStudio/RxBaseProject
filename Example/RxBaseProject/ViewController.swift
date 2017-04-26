@@ -9,23 +9,12 @@
 import UIKit
 import RxBaseProject
 
-class ViewController: BaseViewController, UITableViewDelegate {
+class ViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    let viewModel:ExampleViewModelType = ExampleViewModel()
+    
 
-    
-    let viewModel:ViewModelType = ViewModel()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.placeholderText = "testing"
-        
-        
-    }
- 
-    
-    
     override func configureRx() {
         super.configureRx()
         

@@ -9,12 +9,12 @@
 import Foundation
 import RxBaseProject
 
-protocol ViewModelType: BaseViewModelType {
+protocol ExampleViewModelType: BaseViewModelType {
 
 }
 
 
-class ViewModel: BaseViewModel , ViewModelType{
+class ExampleViewModel: BaseViewModel , ExampleViewModelType{
     
     
     override init() {
