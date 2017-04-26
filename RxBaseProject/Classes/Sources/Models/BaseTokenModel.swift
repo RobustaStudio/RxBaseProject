@@ -1,6 +1,6 @@
 //
 //  TokenModel.swift
-//  MiniCash
+//  
 //
 //  Created by Ahmed Mohamed Fareed on 2/2/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -15,15 +15,15 @@ private extension Date {
     }
 }
 
-public class TokenModel: BaseModel {
+public class BaseTokenModel: BaseModel {
     
-    public var accessToken: String?
-    public var tokenType: String?
-    public var expiresIn: Int?
-    public var refreshToken: String?
+    var accessToken: String?
+    var tokenType: String?
+    var expiresIn: Int?
+    var refreshToken: String?
     
-    public static var shared:TokenModel? {
-        guard let token = TokenModel.getStoredObject(forKey: "current_session") as? TokenModel else {
+    static var shared:BaseTokenModel? {
+        guard let token = BaseTokenModel.getStoredObject(forKey: "current_session") as? BaseTokenModel else {
             return nil
         }
         return token
@@ -37,13 +37,13 @@ public class TokenModel: BaseModel {
         refreshToken <- map["refresh_token"]
     }
     
-    public var isValid: Bool {
+    var isValid: Bool {
         return (accessToken != nil )
     }
     
     //MARK:- Model Coding Managing
     
-    public func save() {
+    func save() {
         self.store(self, withKey: "current_session")
     }
     
@@ -71,8 +71,7 @@ public class TokenModel: BaseModel {
         }
     }
 
-    public static func invalidate() {
-        TokenModel.deleteObject(forKey: "current_session")
-        UserModel.invalidate()
+    func invalidate() {
+        BaseTokenModel.deleteObject(forKey: "current_session")
     }
 }

@@ -1,6 +1,6 @@
 //
 //  UserEntity.swift
-//  MiniCash
+//  
 //
 //  Created by Ahmed Mohamed Fareed on 2/2/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -13,8 +13,8 @@ import RxSwift
 public class UserModel: BaseModel {
     public static var sharedObservable:Variable<UserModel?> = Variable<UserModel?>(nil)
     
-    public var accessToken:TokenModel? {
-        return TokenModel.shared
+    public var accessToken:BaseTokenModel? {
+        return BaseTokenModel.shared
     }
     
     public static var shared:UserModel? {
@@ -37,6 +37,6 @@ public class UserModel: BaseModel {
     }
     
     public static func invalidate() {
-        TokenModel.deleteObject(forKey: "me")
+//        TokenModel.deleteObject(forKey: "me")
     }
 }

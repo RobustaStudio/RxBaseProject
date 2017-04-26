@@ -14,6 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		A720D5181EAE94D80062FDE3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720D5171EAE94D80062FDE3 /* APIManager.swift */; };
+		A720D51A1EAE94FC0062FDE3 /* MiniCashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */; };
 		A74BDA421EAA580100C5D041 /* AppData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A74BDA411EAA580100C5D041 /* AppData.plist */; };
 		A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */; };
 		ADEEE02BEBB631C8FF690B94 /* Pods_RxBaseProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */; };
@@ -45,6 +47,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A720D5171EAE94D80062FDE3 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCashAPI.swift; sourceTree = "<group>"; };
 		A74BDA411EAA580100C5D041 /* AppData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppData.plist; sourceTree = "<group>"; };
 		A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBaseProject.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/RxBaseProject-euvqiasqwlhcuhceyilatpbpurvu/Build/Products/Debug-iphonesimulator/RxBaseProject/RxBaseProject.framework"; sourceTree = "<group>"; };
 		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				A720D5171EAE94D80062FDE3 /* APIManager.swift */,
 			);
 			name = "Example for RxBaseProject";
 			path = RxBaseProject;
@@ -123,6 +128,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A720D5191EAE94FC0062FDE3 /* MiniCashAPI.swift */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -371,7 +377,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A720D5181EAE94D80062FDE3 /* APIManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				A720D51A1EAE94FC0062FDE3 /* MiniCashAPI.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,6 +1,6 @@
 //
 //  ErrorHandler.swift
-//  MiniCash
+//  
 //
 //  Created by Ahmed Mohamed Fareed on 2/18/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -19,7 +19,7 @@ public class GenericError: NSObject {
     public var statusCode:Int = 0
     public var errorMessage:String = ""
     
-    public var errorObject:ErrorModel?
+    public var errorObject:BaseErrorModel?
     
     public init(error:MoyaError) {
         super.init()
@@ -49,7 +49,7 @@ public class GenericError: NSObject {
             }else {
                 self.errorMessage = response.description
             }
-            BaseAPIManager.shared.isLoggedIn(bool: false)
+            SessionService.shared.update(loggedIn: false)
             return
         case 500...599:
             errorMessage = GenericError.ErrorMessage

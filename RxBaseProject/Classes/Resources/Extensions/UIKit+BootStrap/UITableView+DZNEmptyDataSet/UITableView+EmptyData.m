@@ -14,8 +14,6 @@
 // Swizzling is necessary to workaround http://www.openradar.me/21137690
 + (void)load
 {
-    NSLog(@"this is superf test");
-
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
@@ -52,8 +50,8 @@
 
 - (nullable instancetype)xxx_initWithCoder:(NSCoder *)aDecoder  {
     [self xxx_initWithCoder:aDecoder];
-    if ([self respondsToSelector:NSSelectorFromString(@"configureRx")]) {
-        SEL selector = NSSelectorFromString(@"configureRx");
+    if ([self respondsToSelector:NSSelectorFromString(@"configureDelegate")]) {
+        SEL selector = NSSelectorFromString(@"configureDelegate");
         ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
     }
     return self;
@@ -61,8 +59,8 @@
 
 - (instancetype)xxx_initWithFrame:(CGRect)frame style:(UITableViewStyle)style  {
     [self xxx_initWithFrame:frame style:style];
-    if ([self respondsToSelector:NSSelectorFromString(@"configureRx")]) {
-        SEL selector = NSSelectorFromString(@"configureRx");
+    if ([self respondsToSelector:NSSelectorFromString(@"configureDelegate")]) {
+        SEL selector = NSSelectorFromString(@"configureDelegate");
         ((void (*)(id, SEL))[self methodForSelector:selector])(self, selector);
     }
     return self;

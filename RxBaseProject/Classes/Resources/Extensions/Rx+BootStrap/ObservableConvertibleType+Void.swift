@@ -6,8 +6,9 @@
 //  Copyright © 2016 Suyeol Jeon. All rights reserved.
 //
 
-import RxCocoa
+import Foundation
 import RxSwift
+import RxCocoa
 
 extension ObservableConvertibleType where E == Void {
 

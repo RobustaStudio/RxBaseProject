@@ -1,6 +1,6 @@
 //
 //  Networking.swift
-//  MiniCash
+//  
 //
 //  Created by Ahmed Mohamed Fareed on 2/5/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -50,21 +50,23 @@ class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: TargetType {
 }
 
 protocol NetworkingType {
-    associatedtype T: TargetType
+    associatedtype T: TargetType, AccessTokenAuthorizable
     var provider: OnlineProvider<T> { get }
 }
 
-struct Networking: NetworkingType {
-    let provider: OnlineProvider<BaseAPI>
+public struct Networking<T>: NetworkingType where T:TargetType, T:AccessTokenAuthorizable {
+    let provider: OnlineProvider<T>
+    
+    public init(_ type:T) {
+        
+    }
     
     /// Request to fetch and store new XApp token if the current token is missing or expired.
     private func XAppTokenRequest() -> Observable<String?> {
         
-        let appToken = TokenModel.shared
-        
         // If we have a valid token, return it and forgo a request for a fresh one.
-        if let xAppToken = appToken, xAppToken.isValid {
-            return Observable.just(xAppToken.accessToken!)
+        if let xtoken = SessionService.shared.xToken {
+            return Observable.just(xtoken)
         }
 
         let newTokenRequest:Observable<String?> = Observable.empty()
@@ -91,43 +93,47 @@ struct Networking: NetworkingType {
 
     
     /// Request to fetch a given target. Ensures that valid XApp tokens exist before making request
-    func request(_ token: BaseAPI, model:BaseModel?=nil) -> Observable<Response> {
+    func request(_ token: T, model:BaseModel?=nil) -> Observable<Response> {
         let actualRequest = self.provider.request(token)
         
-        if token.shouldAuthorize && AppSetup.shared.AllowRefreshToken {
+        if token.shouldAuthorize && AppSetup.shared.allowRefreshToken {
             return self.XAppTokenRequest().flatMap { _ in actualRequest }
         }
         
         return actualRequest.asObservable()
             .debug()
             .filterSuccessfulStatusCodes()
-            .do(onError: { (e) in
-                guard let error = e as? Moya.MoyaError else { throw e }
-                let reError = GenericError(error: error)
-                print(reError.errorMessage)
-            })
+//            .do(onError: { (e) in
+//                guard let error = e as? Moya.MoyaError else { throw e }
+//                let reError = GenericError(error: error)
+//                print(reError.errorMessage)
+//            })
     }
 }
 
 //MARK:- Static NetworkingType methods
 extension NetworkingType {
     
-    static func newDefaultNetworking() -> Networking {
-        return Networking(provider: newProvider([NetworkLoggerPlugin(verbose: false)]))
+    static func `default`() -> Networking<T> {
+        return Networking(provider: newProvider([]))
     }
     
-    static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: TargetType, T: BaseType {
+    static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: TargetType, T:AccessTokenAuthorizable {
         return { target in
             
-            var endpoint: Endpoint<T> = Endpoint<T>(url: url(target), sampleResponseClosure:  {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: target.parameterEncoding)
+            var endpoint: Endpoint<T> = Endpoint<T>(url: target.baseURL.appendingPathComponent(target.path).absoluteString,
+                                                    sampleResponseClosure:  {.networkResponse(200, target.sampleData)},
+                                                    method: target.method,
+                                                    parameters: target.parameters,
+                                                    parameterEncoding: target.parameterEncoding)
             
             // If we were given an xAccessToken, add it
-            if let xAccessToken = TokenModel.shared?.accessToken {
+            if let xAccessToken = SessionService.shared.xToken {
                 endpoint = endpoint.adding(httpHeaderFields: ["Authorization": "Bearer \(xAccessToken)", "Content-Type":"application/json", "Accept":"application/json"])
             }
             
             // non-XAuth token requests
-            if target.addAppAuth {
+            if target.shouldAuthorize {
                 return endpoint.adding(httpHeaderFields:[:])
             } else {
                 return endpoint
@@ -145,13 +151,13 @@ extension NetworkingType {
     }
     
     static func APIStubBehaviour<T>(_: T) -> Moya.StubBehavior {
-        return AppSetup.shared.UsingStubbed ? .immediate : .never
+        return AppSetup.shared.usingStubbed ? .immediate : .never
     }
 }
 
-private func newProvider<T>(_ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: TargetType, T:BaseType {
-    return OnlineProvider(endpointClosure: Networking.endpointsClosure(xAccessToken),
-                          requestClosure: Networking.endpointResolver(),
-                          stubClosure: Networking.APIStubBehaviour,
+private func newProvider<T>(_ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: TargetType, T:AccessTokenAuthorizable {
+    return OnlineProvider(endpointClosure: Networking<T>.endpointsClosure(xAccessToken),
+                          requestClosure: Networking<T>.endpointResolver(),
+                          stubClosure: Networking<T>.APIStubBehaviour,
                           plugins: plugins)
 }

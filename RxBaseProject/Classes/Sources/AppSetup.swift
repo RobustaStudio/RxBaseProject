@@ -1,6 +1,6 @@
 //
 //  AppSetup.swift
-//  MiniCash
+//  
 //
 //  Created by Ahmed Mohamed Fareed on 2/2/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -8,73 +8,109 @@
 
 import Foundation
 
-public class AppSetup {
+struct BaseURL {
+    var url:String
+    var staggingURL:String
+    var productionURL:String
+    var imageURLSuffix:String
+    var requestURLSuffix:String
+}
+
+struct AppSecurity {
+    var clientIdKey:String       = "client_id"
+    var clientSecretKey:String   = "client_secret"
+    var appTokenKey:String       = "app_token"
     
-    public static let shared = AppSetup()
+    var clientIdValue:String     = ""
+    var clientSecretValue:String = ""
+    var appTokenValue:String     = ""
     
-    private var dicData:[String: Any]!
+    var usingAppToken:Bool = false
     
-    init() {
-        if let path = Bundle.main.path(forResource: "AppData", ofType: "plist") {
-            if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
-                self.dicData = dic
-            }else {
-                fatalError("Plist file isn't structure correctly")
-            }
-        }else {
-            fatalError("Index Is Invalid")
+    init(clientId:String, clientSecret:String, clientIdKey:String?=nil, clientSecretKey:String?=nil) {
+        self.clientIdValue = clientId
+        self.clientSecretValue = clientSecret
+        
+        self.usingAppToken = false
+        
+        if let idKey = clientIdKey {
+            self.clientIdKey = idKey
+        }
+        
+        if let secretKey = clientSecretKey {
+            self.clientSecretKey = secretKey
         }
     }
     
-    public var UsingAppToken:Bool {
-        return dicData["UsingAppToken"] as! Bool
+    init(appToken:String, tokenKey:String?=nil) {
+        self.appTokenValue = appToken
+        self.usingAppToken = true
+        if let tKey = tokenKey {
+            self.appTokenKey = tKey
+        }
+    }
+}
+
+public struct AppConfig {
+    var security:AppSecurity
+    var urls:BaseURL
+    
+    var isProduction:Bool = false
+    var useStubbedApis:Bool = false
+    var allowRefreshToken:Bool = true
+}
+
+public class AppSetup {
+    
+    public static var shared:AppSetup!
+    
+    private var config:AppConfig!
+    
+    init(config:AppConfig) {
+        self.config = config
     }
     
-    public var UsingStaging:Bool {
-        return dicData["UsingStaging"] as! Bool
+    public var usingProduction:Bool {
+        return config.isProduction
     }
     
-    public var version :String {
-        return dicData["version"] as! String
+    public var usingStubbed:Bool {
+        return config.useStubbedApis
     }
     
-    public var UsingStubbed:Bool {
-        return dicData["UsingStubbed"] as! Bool
-    }
-    
-    public var AllowRefreshToken:Bool {
-        return dicData["AllowRefreshToken"] as! Bool
-    }
-    
-    public var AppSecurity:String {
-        return dicData["AppSecurity"] as! String
+    public var allowRefreshToken:Bool {
+        return config.allowRefreshToken
     }
     
     public var clientId:String {
-        return dicData["clientId"]as! String
+        return config.security.usingAppToken ? "" : config.security.clientIdValue
     }
     
     public var clientSecret:String {
-        return dicData["clientSecret"]as! String
+        return config.security.usingAppToken ? "" : config.security.clientSecretValue
     }
     
-    public var AppToken:String {
-        return dicData["AppToken"]as! String
+    public var appToken:String {
+        return config.security.usingAppToken ? config.security.appTokenValue : ""
     }
     
-    public var BaseURLs:String {
-        return dicData["BaseURLs"]as! String
+    public var url:String {
+        return config.urls.url
     }
     
-    public var StagingURL:String {
-        return dicData["StagingURL"]as! String
+    public var stagingURL:String {
+        return config.urls.staggingURL
     }
     
-    public var ProductionURL:String {
-        return dicData["ProductionURL"]as! String
+    public var productionURL:String {
+        return config.urls.productionURL
     }
     
-    public var ImageURLSuffix:String {
-        return dicData["ImageURLSuffix"]as! String
+    public var imagesURL:String {
+        return config.urls.imageURLSuffix
+    }
+    
+    public var requestSuffixURL:String {
+        return config.urls.requestURLSuffix
     }
 }

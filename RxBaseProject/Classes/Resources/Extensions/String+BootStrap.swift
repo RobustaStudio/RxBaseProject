@@ -23,14 +23,14 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
     
-    //    /// Adding underline to current string
-//    ///
-//    /// - Returns: underlined attributedString
-//    func underlineString() -> NSAttributedString {
-//        let textRange = NSMakeRange(0, self.characters.count)
-//        let attributedText = NSMutableAttributedString(string: self)
-//        attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
-//        // Add other attributes if needed
-//        return attributedText
-//    }
+    /// Adding underline to current string
+    ///
+    /// - Returns: underlined attributedString
+    func underlineString() -> NSAttributedString {
+        let textRange = NSMakeRange(0, self.characters.count)
+        let attributedText = NSMutableAttributedString(string: self)
+        attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+        // Add other attributes if needed
+        return attributedText
+    }
 }

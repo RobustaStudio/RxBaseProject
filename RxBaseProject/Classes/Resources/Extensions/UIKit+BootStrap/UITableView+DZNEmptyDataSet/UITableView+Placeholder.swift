@@ -8,7 +8,6 @@
 
 import UIKit
 import DZNEmptyDataSet
-import RxSwift
 
 extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -16,22 +15,34 @@ extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     public var placeholderText: String? {
         get { return UITableView.association[self] as? String }
-        set { UITableView.association[self] = newValue }
+        set {
+            UITableView.association[self] = newValue
+            self.reloadEmptyDataSet()
+        }
     }
 
     public var placeholderColor: UIColor? {
         get { return UITableView.association[self] as? UIColor }
-        set { UITableView.association[self] = newValue }
+        set {
+            UITableView.association[self] = newValue
+            self.reloadEmptyDataSet()
+        }
     }
     
     public var placeholderFontSize: CGFloat? {
         get { return UITableView.association[self] as? CGFloat }
-        set { UITableView.association[self] = newValue }
+        set {
+            UITableView.association[self] = newValue
+            self.reloadEmptyDataSet()
+        }
     }
     
     public var placeholderFontFamily: String? {
         get { return UITableView.association[self] as? String }
-        set { UITableView.association[self] = newValue }
+        set {
+            UITableView.association[self] = newValue
+            self.reloadEmptyDataSet()
+        }
     }
     
     public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
@@ -56,7 +67,7 @@ extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         return true
     }
     
-    func configureRx() {
+    func configureDelegate() {
         self.emptyDataSetSource = self
         self.emptyDataSetDelegate = self
     }

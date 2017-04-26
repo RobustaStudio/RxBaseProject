@@ -1,6 +1,5 @@
 //
 //  BaseViewModel.swift
-//  MiniCash
 //
 //  Created by Ahmed Mohamed Fareed on 1/31/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.

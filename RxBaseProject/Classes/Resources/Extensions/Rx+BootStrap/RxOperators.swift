@@ -103,31 +103,7 @@ extension ObservableType {
   }
 }
     
-extension ObservableType {
-    func dismissKeyboard() -> Observable<E> {
-        return self.do(onNext: { (_) in
-            AppDelegate.dismissKeyboard()
-        })
-    }
-    
-    func block() -> Observable<E> {
-        return self.do(onNext: { (_) in
-            AppDelegate.dismissKeyboard()
-            AppDelegate.showLoadingProgress()
-        })
-    }
-    
-    func unblock() -> Observable<E> {
-        return self.do(onNext: { (_) in
-            AppDelegate.dismissLoadingProgress()
-        }, onError: { (_) in
-            AppDelegate.dismissLoadingProgress()
-        }, onCompleted: { 
-            AppDelegate.dismissLoadingProgress()
-        })
-    }
-    
-}
+
 
 extension Observable where Element: Equatable {
     func ignore(value: Element) -> Observable<Element> {

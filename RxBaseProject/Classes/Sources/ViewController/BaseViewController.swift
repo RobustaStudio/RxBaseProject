@@ -23,7 +23,7 @@ open class BaseViewController: UIViewController {
         
         self.view.endEditing(true)
         self.rx.viewWillDisappear.asDriver(onErrorJustReturn: false).drive(onNext: { (_) in
-            AppDelegate.dismissLoadingProgress()
+            Helpers.dismissLoadingProgress()
         }).addDisposableTo(self.disposeBag)
     }
     
