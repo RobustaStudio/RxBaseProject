@@ -18,7 +18,7 @@ import UIKit
 
 infix operator <-> : DefaultPrecedence
 
-func nonMarkedText(_ textInput: UITextInput) -> String? {
+public func nonMarkedText(_ textInput: UITextInput) -> String? {
     let start = textInput.beginningOfDocument
     let end = textInput.endOfDocument
 
@@ -39,7 +39,7 @@ func nonMarkedText(_ textInput: UITextInput) -> String? {
     return (textInput.text(in: startRange) ?? "") + (textInput.text(in: endRange) ?? "")
 }
 
-func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {
+public func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<String>) -> Disposable {
     let bindToUIDisposable = variable.asObservable()
         .bindTo(textInput.text)
     let bindToVariable = textInput.text
@@ -71,7 +71,7 @@ func <-> <Base: UITextInput>(textInput: TextInput<Base>, variable: Variable<Stri
     return Disposables.create(bindToUIDisposable, bindToVariable)
 }
 
-func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
+public func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable {
     if T.self == String.self {
 #if DEBUG
         fatalError("It is ok to delete this message, but this is here to warn that you are maybe trying to bind to some `rx_text` property directly to variable.\n" +
@@ -98,7 +98,7 @@ func <-> <T>(property: ControlProperty<T>, variable: Variable<T>) -> Disposable 
 // MARK: - IgnoreErrors
 
 extension ObservableType {
-  func ignoreErrors() -> Observable<E> {
+  public func ignoreErrors() -> Observable<E> {
     return self.catchError { _ in .empty() }
   }
 }
@@ -106,7 +106,7 @@ extension ObservableType {
 
 
 extension Observable where Element: Equatable {
-    func ignore(value: Element) -> Observable<Element> {
+    public func ignore(value: Element) -> Observable<Element> {
         return filter { (e) -> Bool in
             return value != e
         }
@@ -147,5 +147,5 @@ protocol BooleanType {
 
 
 extension Bool: BooleanType {
-    var boolValue: Bool { return self }
+    public var boolValue: Bool { return self }
 }

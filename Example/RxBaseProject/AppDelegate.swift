@@ -15,19 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        //        if BaseAPIManager.isValidSession {
-        //            login()
-        //        }else {
-        //            notLoggedIn()
-        //        }
-        //
-        //        BaseAPIManager.shared.shouldForceLoggout.drive(onNext: { valid in
-        //            if valid {
-        //                self.forceLogOut(message: nil)
-        //            }
-        //        }).addDisposableTo(disposeBag)
-        
         return true
     }
     

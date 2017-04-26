@@ -9,14 +9,14 @@
 import UIKit
 import Kingfisher
 
-extension UIImageView {
+public extension UIImageView {
     
     /// takes an url and provied an animated loading progress while
     /// fetching the image from API
     ///
     /// - Parameters:
     ///   - url: url to be fetched
-    func loadImage(url:URL?) {
+    public func loadImage(url:URL?, mode:UIViewContentMode = .scaleAspectFit) {
         guard let `url` = url else {
             return
         }
@@ -27,6 +27,7 @@ extension UIImageView {
         var constraints = [NSLayoutConstraint]()
         constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[activity]-|", options: [], metrics: nil, views: ["activity":activity])
         constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[activity]-|", options: [], metrics: nil, views: ["activity":activity])
+        self.contentMode = mode
         NSLayoutConstraint.activate(constraints)
         self.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(0.2))], progressBlock: { (progress, done) in
             }, completionHandler: { (image, error, cacheType, url) in

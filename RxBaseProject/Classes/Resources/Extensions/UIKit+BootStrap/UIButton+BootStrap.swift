@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - UIButton Extention
 extension UIButton {
-    func loadingIndicator(_ show: Bool) {
+    public func loadingIndicator(_ show: Bool) {
         let tag = 808404
         if show {
             self.isEnabled = false

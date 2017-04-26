@@ -12,7 +12,7 @@ import RxCocoa
 
 extension ObservableConvertibleType where E == Void {
 
-  func asDriver() -> Driver<E> {
+  public func asDriver() -> Driver<E> {
     return self.asDriver(onErrorJustReturn: Void())
   }
 }

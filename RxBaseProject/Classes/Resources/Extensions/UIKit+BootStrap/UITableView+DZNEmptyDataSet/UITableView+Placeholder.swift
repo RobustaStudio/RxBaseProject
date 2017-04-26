@@ -45,14 +45,18 @@ extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         }
     }
     
+    public func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -15
+    }
+    
     public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         guard let placeholderValue = placeholderText else {
             return NSMutableAttributedString(string: "Empty".localized)
         }
         
         let text = placeholderText ?? "Empty"
-        let color = placeholderColor ?? UIColor.black
-        let fontSize = placeholderFontSize ?? 17
+        let color = placeholderColor ?? UIColor.darkGray
+        let fontSize = placeholderFontSize ?? 25
         
         let textRange = NSMakeRange(0, text.characters.count)
         

@@ -12,21 +12,21 @@ extension String {
     /// extracts digit only from current string
     ///
     /// - Returns: digit only string
-    func getDigitsOnly() -> String {
+    public func getDigitsOnly() -> String {
         let regex = try! NSRegularExpression(pattern: "[0-9]", options: [])
         let matches = regex.matches(in: self, options: [NSRegularExpression.MatchingOptions.withTransparentBounds], range: NSRange(location: 0, length: self.characters.count)).map { (self as NSString).substring(with: $0.range)}
         let result  = (matches as NSArray).componentsJoined(by: "")
         return result
     }
     
-    var localized: String {
+    public var localized: String {
         return NSLocalizedString(self, comment: "")
     }
     
     /// Adding underline to current string
     ///
     /// - Returns: underlined attributedString
-    func underlineString() -> NSAttributedString {
+    public func underlineString() -> NSAttributedString {
         let textRange = NSMakeRange(0, self.characters.count)
         let attributedText = NSMutableAttributedString(string: self)
         attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
