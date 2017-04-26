@@ -13,8 +13,11 @@ import Alamofire
 import RxOptional
 import SVProgressHUD
 
+public protocol BaseAPI:TargetType, AccessTokenAuthorizable {}
+
+
 /// Overriding RxMoyaProvider to add custom defaults
-class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: TargetType {
+public class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: BaseAPI {
     
     fileprivate let online: Observable<Bool>
     
@@ -37,7 +40,7 @@ class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: TargetType {
     ///
     /// - Parameter token: the request that is required to be sent
     /// - Returns: the response for the sent request
-    override func request(_ token: Target) -> Observable<Moya.Response> {
+    override public func request(_ token: Target) -> Observable<Moya.Response> {
         
         let actualRequest = super.request(token)
         return online
@@ -49,18 +52,17 @@ class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: TargetType {
     }
 }
 
+
 protocol NetworkingType {
-    associatedtype T: TargetType, AccessTokenAuthorizable
+    associatedtype T: BaseAPI
+    
     var provider: OnlineProvider<T> { get }
 }
 
-public struct Networking<T>: NetworkingType where T:TargetType, T:AccessTokenAuthorizable {
-    let provider: OnlineProvider<T>
+public struct Networking<API>: NetworkingType where API: BaseAPI {
     
-    public init(_ type:T) {
-        
-    }
-    
+    public let provider: OnlineProvider<API>
+
     /// Request to fetch and store new XApp token if the current token is missing or expired.
     private func XAppTokenRequest() -> Observable<String?> {
         
@@ -114,9 +116,14 @@ public struct Networking<T>: NetworkingType where T:TargetType, T:AccessTokenAut
 //MARK:- Static NetworkingType methods
 extension NetworkingType {
     
-    static func `default`() -> Networking<T> {
-        return Networking(provider: newProvider([]))
+    public static func `default`() -> Networking<T> {
+        return Networking(provider: newProvider(T.self,[]))
     }
+
+    public static func new() -> Networking<T> {
+        return Networking(provider: newProvider(T.self, []))
+    }
+   
     
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: TargetType, T:AccessTokenAuthorizable {
         return { target in
@@ -155,7 +162,7 @@ extension NetworkingType {
     }
 }
 
-private func newProvider<T>(_ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: TargetType, T:AccessTokenAuthorizable {
+private func newProvider<T>(_ type:T.Type, _ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: BaseAPI {
     return OnlineProvider(endpointClosure: Networking<T>.endpointsClosure(xAccessToken),
                           requestClosure: Networking<T>.endpointResolver(),
                           stubClosure: Networking<T>.APIStubBehaviour,

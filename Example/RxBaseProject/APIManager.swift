@@ -20,27 +20,14 @@ import RxBaseProject
 class APIManager  {
     
     static let shared:APIManager = APIManager()
-    fileprivate static let provider:Networking = Networking()
-    fileprivate let forceLogout = Variable<Bool>(false)
-    internal var shouldForceLoggout = Driver<Bool>.empty()
+    fileprivate static var network:Networking<SampleAPI> = Networking<SampleAPI>.default()
+    fileprivate static  var provider:OnlineProvider<SampleAPI> {
+        return network.provider
+    }
     internal var dBag = DisposeBag()
-    internal var requestIsLoading = Driver<Bool>.just(true)
-    
     
     //MARK:- General
-    func appVersion() -> Observable<String?> {
-        let nsObject = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-        return APIManager.provider.provider.request(.validateAppVersion(version: nsObject)).map { (response) -> String? in
-            if !(200..<299 ~= response.statusCode) { return nil }
-            //            let _data = try? JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments) as! String
-            //
-            //            if let ver = _data {
-            //                if (ver as NSString).doubleValue  > (nsObject as NSString).doubleValue {
-            //                    return ver
-            //                }
-            //            }
-            
-            return nil
-        }
+    func getNews() -> Observable<NewsModel> {
+        return APIManager.provider.request(.newsList()).mapObject(NewsModel.self).debug()
     }
 }

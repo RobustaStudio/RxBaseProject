@@ -13,16 +13,28 @@ class ViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     
+    let viewModel:ViewModelType = ViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
-        
         tableView.placeholderText = "testing"
+        
+        
     }
  
     
     
+    override func configureRx() {
+        super.configureRx()
+        
+        self.rx.viewWillAppear
+            .bindTo(viewModel.viewWillAppear)
+            .addDisposableTo(self.disposeBag)
+        
+        
+    }
     
 }
 

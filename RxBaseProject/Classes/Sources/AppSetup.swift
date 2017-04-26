@@ -52,17 +52,22 @@ struct AppSecurity {
 }
 
 public struct AppConfig {
-    var security:AppSecurity
-    var urls:BaseURL
+    var security:AppSecurity?
+    var urls:BaseURL?
     
     var isProduction:Bool = false
     var useStubbedApis:Bool = false
     var allowRefreshToken:Bool = true
+    
+    init() {
+        security = nil
+        urls = nil
+    }
 }
 
 public class AppSetup {
     
-    public static var shared:AppSetup!
+    public static var shared:AppSetup = AppSetup(config: AppConfig())
     
     private var config:AppConfig!
     
@@ -83,34 +88,42 @@ public class AppSetup {
     }
     
     public var clientId:String {
-        return config.security.usingAppToken ? "" : config.security.clientIdValue
+        guard let seucrity = config.security else { return "" }
+        return seucrity.usingAppToken ? "" : seucrity.clientIdValue
     }
     
     public var clientSecret:String {
-        return config.security.usingAppToken ? "" : config.security.clientSecretValue
+        guard let seucrity = config.security else { return "" }
+        return seucrity.usingAppToken ? "" : seucrity.clientSecretValue
     }
     
     public var appToken:String {
-        return config.security.usingAppToken ? config.security.appTokenValue : ""
+        guard let seucrity = config.security else { return "" }
+        return seucrity.usingAppToken ? seucrity.appTokenValue : ""
     }
     
     public var url:String {
-        return config.urls.url
+        guard let urls = config.urls else { return "" }
+        return urls.url
     }
     
     public var stagingURL:String {
-        return config.urls.staggingURL
+        guard let urls = config.urls else { return "" }
+        return urls.staggingURL
     }
     
     public var productionURL:String {
-        return config.urls.productionURL
+        guard let urls = config.urls else { return "" }
+        return urls.productionURL
     }
     
     public var imagesURL:String {
-        return config.urls.imageURLSuffix
+        guard let urls = config.urls else { return "" }
+        return urls.imageURLSuffix
     }
     
     public var requestSuffixURL:String {
-        return config.urls.requestURLSuffix
+        guard let urls = config.urls else { return "" }
+        return urls.requestURLSuffix
     }
 }

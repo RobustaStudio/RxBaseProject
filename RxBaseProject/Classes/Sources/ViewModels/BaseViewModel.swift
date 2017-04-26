@@ -41,7 +41,7 @@ open class BaseViewModel: BaseViewModelType {
         tableViewPlaceholderText = tableIsLoading.asObservable().asDriver(onErrorJustReturn: "")
     }
     
-    open func placeholderTextBaseOn<T:Any>(triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
+    public func placeholderTextBaseOn<T:Any>(triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
         viewWillAppear.asObservable().subscribe(onNext: {[weak self] (_) in
             self?.tableIsLoading.value = NSLocalizedString("Loading", comment: "")
         }).addDisposableTo(dBag)

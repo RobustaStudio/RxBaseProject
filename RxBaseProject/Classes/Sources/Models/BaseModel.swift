@@ -28,12 +28,12 @@ open class BaseModel: NSObject, Mappable, NSCoding {
     }
     
     // Mappable
-    public func mapping(map: Map) {}
+    open func mapping(map: Map) {}
     
     // Storing
-    public func decodeData(coder aDecoder: NSCoder) {}
+    open func decodeData(coder aDecoder: NSCoder) {}
     
-    public func encodeData(with aCoder: NSCoder) {}
+    open func encodeData(with aCoder: NSCoder) {}
     
     public func store(_ object:Any, withKey key:String) {
         let userDefaults = UserDefaults.standard

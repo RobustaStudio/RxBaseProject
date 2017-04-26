@@ -16,25 +16,25 @@ import Alamofire
 
 import RxBaseProject
 
-enum MiniCashAPI {
+enum SampleAPI {
     
     //MARK:- General
-    case validateAppVersion(version:String)
+    case newsList()
 }
 
-extension MiniCashAPI: TargetType, AccessTokenAuthorizable {
+extension SampleAPI: BaseAPI {
     
     var path: String {
         switch self {
-        case .validateAppVersion(_):
-            return "/api/check_ios_version"
+        case .newsList():
+            return "/svc/books/v3/lists/overview.json"
         }
     }
     
     var parameters: [String : Any]? {
         switch self {
-        case .validateAppVersion(let version):
-            return ["version":version]
+        case .newsList():
+            return ["api-key":"c1ffa36662824925a52c83559b03b290"]
         default:
             return nil
         }
@@ -63,16 +63,19 @@ extension MiniCashAPI: TargetType, AccessTokenAuthorizable {
     }
 
     public var parameterEncoding: ParameterEncoding {
-        return JSONEncoding.default
+        switch self {
+        case .newsList():
+            return URLEncoding.default
+        default:
+            return JSONEncoding.default
+
+        }
     }
     
-    var base:String {return AppSetup.shared.url }
     var baseURL: URL {
         switch self {
-//        case .newRequest(_):
-//            return URL(string: "http://requestb.in")!
         default:
-            return URL(string: base)!
+            return URL(string: "https://api.nytimes.com")!
         }
         
     }
