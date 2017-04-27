@@ -24,7 +24,7 @@ class APIManager  {
     fileprivate static  var provider:OnlineProvider<SampleAPI> {
         return network.provider
     }
-    internal var dBag = DisposeBag()
+    
     
     //MARK:- General
     func getNews() -> Observable<NewsModel> {

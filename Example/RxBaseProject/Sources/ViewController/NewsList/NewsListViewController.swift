@@ -65,13 +65,6 @@ class NewsListViewController: BaseViewController {
             .drive(self.tableView.rx.items(dataSource: self.dataSource))
             .addDisposableTo(self.disposeBag)
         
-        viewModel.sections.drive(onNext: { [weak self] (list) in
-            if list.count > 0 {
-                self?.tableView.separatorStyle = .singleLine
-            }else {
-                self?.tableView.separatorStyle = .none
-            }}).addDisposableTo(self.disposeBag)
-        
         viewModel.tableViewPlaceholderText.drive(onNext: { [weak self] (text) in
             self?.tableView.placeholderText = text
         }).addDisposableTo(self.disposeBag)

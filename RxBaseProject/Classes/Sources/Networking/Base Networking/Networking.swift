@@ -95,7 +95,7 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
 
     
     /// Request to fetch a given target. Ensures that valid XApp tokens exist before making request
-    func request(_ token: T, model:BaseModel?=nil) -> Observable<Response> {
+    func request(_ token: API, model:BaseModel?=nil) -> Observable<Response> {
         let actualRequest = self.provider.request(token)
         
         if token.shouldAuthorize && AppSetup.shared.allowRefreshToken {
