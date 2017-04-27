@@ -12,21 +12,23 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
-protocol ExampleViewModelType: BaseViewModelType {
+protocol NewsListViewModelType: BaseViewModelType {
     // Input
     var reloadTrigger: PublishSubject<Void> { get }
     
     // Output
     var sections:Driver<[NewListSection]> { get }
+    var tableViewPlaceholderText:Driver<String> {get}
 }
 
-class ExampleViewModel: BaseViewModel , ExampleViewModelType {
+class NewsListViewModel: BaseViewModel , NewsListViewModelType {
     
     // Input
     var reloadTrigger = PublishSubject<Void>()
     
     // Output
     var sections = Driver<[NewListSection]>.empty()
+    var tableViewPlaceholderText = Driver<String>.empty()
 
     override init() {
         super.init()
@@ -36,14 +38,23 @@ class ExampleViewModel: BaseViewModel , ExampleViewModelType {
             .debounce(0.3, scheduler: MainScheduler.instance)
             .flatMapLatest { (_) -> Observable<NewsModel> in
                 return APIManager.shared.getNews()
-            }
-            .shareReplay(1)
+            }.do(onNext: { (s) in
+              print(s)
+            })
 
-        let onViewData = self.viewWillAppear.asObservable().withLatestFrom(APIManager.shared.getNews()).do(onNext: { (model) in
-//            print(model.lists?.count)
-        })
+        let onViewData = self.viewWillAppear
+            .asObservable()
+            .withLatestFrom(APIManager.shared.getNews())
+            .do(onNext: { (s) in
+                print(s)
+            })
         
-        let loadedData = Observable.of(reloadedData, onViewData).merge()
+        let loadedData = Observable.of(reloadedData, onViewData)
+            .merge()
+            .do(onNext: { (mew) in
+                print("asd")
+                print(mew)
+            })
         
         self.sections = loadedData.map({ (model) -> [NewListSection] in
             var list:[NewListCellViewModel] = []
@@ -53,6 +64,6 @@ class ExampleViewModel: BaseViewModel , ExampleViewModelType {
             return [NewListSection(model: Void(), items: list)]
         }).asDriver(onErrorJustReturn: [])
         
-        self.placeholderTextBaseOn(triger: reloadTrigger, data: loadedData, loadingText: "loading", emptyText: "Empty")
+        self.placeholderTextBaseOn(tableViewPlaceHolderText: &tableViewPlaceholderText, data: loadedData)
     }
 }

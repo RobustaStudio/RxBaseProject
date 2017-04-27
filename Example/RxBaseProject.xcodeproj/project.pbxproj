@@ -12,10 +12,9 @@
 		A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F31EB0A10A004FC921 /* AppDelegate.swift */; };
 		A75774081EB0A10A004FC921 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A75773F41EB0A10A004FC921 /* Info.plist */; };
 		A75774091EB0A10A004FC921 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75773F61EB0A10A004FC921 /* Images.xcassets */; };
-		A757740A1EB0A10A004FC921 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F91EB0A10A004FC921 /* BaseModel.swift */; };
 		A757740B1EB0A10A004FC921 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FA1EB0A10A004FC921 /* NewsModel.swift */; };
 		A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FC1EB0A10A004FC921 /* APIManager.swift */; };
-		A757740D1EB0A10A004FC921 /* MiniCashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */; };
+		A757740D1EB0A10A004FC921 /* SampleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FD1EB0A10A004FC921 /* SampleAPI.swift */; };
 		A75774101EB0A10A004FC921 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A75774031EB0A10A004FC921 /* LaunchScreen.xib */; };
 		A75774111EB0A10A004FC921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A75774051EB0A10A004FC921 /* Main.storyboard */; };
 		A75774141EB0A215004FC921 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774131EB0A215004FC921 /* NewsListViewController.swift */; };
@@ -23,7 +22,7 @@
 		A75774181EB0AB0B004FC921 /* DataSourcesListSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774161EB0AB0B004FC921 /* DataSourcesListSections.swift */; };
 		A757741D1EB0ACAD004FC921 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757741B1EB0ACAD004FC921 /* NewsListTableViewCell.swift */; };
 		A757741E1EB0ACAD004FC921 /* NewsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A757741C1EB0ACAD004FC921 /* NewsListTableViewCell.xib */; };
-		A75774211EB0ACE3004FC921 /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774201EB0ACE3004FC921 /* ExampleViewModel.swift */; };
+		A75774211EB0ACE3004FC921 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774201EB0ACE3004FC921 /* NewsListViewModel.swift */; };
 		A75774231EB0ACFD004FC921 /* NewListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774221EB0ACFD004FC921 /* NewListCellViewModel.swift */; };
 		A75774251EB0BEE4004FC921 /* NewsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774241EB0BEE4004FC921 /* NewsItemModel.swift */; };
 		A75774271EB0BF74004FC921 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774261EB0BF74004FC921 /* BookModel.swift */; };
@@ -54,10 +53,9 @@
 		A75773F31EB0A10A004FC921 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A75773F41EB0A10A004FC921 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75773F61EB0A10A004FC921 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A75773F91EB0A10A004FC921 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		A75773FA1EB0A10A004FC921 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		A75773FC1EB0A10A004FC921 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniCashAPI.swift; sourceTree = "<group>"; };
+		A75773FD1EB0A10A004FC921 /* SampleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleAPI.swift; sourceTree = "<group>"; };
 		A75774041EB0A10A004FC921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A75774061EB0A10A004FC921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A75774131EB0A215004FC921 /* NewsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +63,7 @@
 		A75774161EB0AB0B004FC921 /* DataSourcesListSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourcesListSections.swift; sourceTree = "<group>"; };
 		A757741B1EB0ACAD004FC921 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		A757741C1EB0ACAD004FC921 /* NewsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsListTableViewCell.xib; sourceTree = "<group>"; };
-		A75774201EB0ACE3004FC921 /* ExampleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
+		A75774201EB0ACE3004FC921 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		A75774221EB0ACFD004FC921 /* NewListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListCellViewModel.swift; sourceTree = "<group>"; };
 		A75774241EB0BEE4004FC921 /* NewsItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemModel.swift; sourceTree = "<group>"; };
 		A75774261EB0BF74004FC921 /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 		A75773F81EB0A10A004FC921 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A75773F91EB0A10A004FC921 /* BaseModel.swift */,
 				A75773FA1EB0A10A004FC921 /* NewsModel.swift */,
 				A75774241EB0BEE4004FC921 /* NewsItemModel.swift */,
 				A75774261EB0BF74004FC921 /* BookModel.swift */,
@@ -201,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				A75773FC1EB0A10A004FC921 /* APIManager.swift */,
-				A75773FD1EB0A10A004FC921 /* MiniCashAPI.swift */,
+				A75773FD1EB0A10A004FC921 /* SampleAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -262,7 +259,7 @@
 		A757741F1EB0ACD5004FC921 /* NewList */ = {
 			isa = PBXGroup;
 			children = (
-				A75774201EB0ACE3004FC921 /* ExampleViewModel.swift */,
+				A75774201EB0ACE3004FC921 /* NewsListViewModel.swift */,
 				A75774221EB0ACFD004FC921 /* NewListCellViewModel.swift */,
 			);
 			path = NewList;
@@ -485,12 +482,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75774211EB0ACE3004FC921 /* ExampleViewModel.swift in Sources */,
+				A75774211EB0ACE3004FC921 /* NewsListViewModel.swift in Sources */,
 				A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */,
 				A757740B1EB0A10A004FC921 /* NewsModel.swift in Sources */,
 				A75774251EB0BEE4004FC921 /* NewsItemModel.swift in Sources */,
-				A757740D1EB0A10A004FC921 /* MiniCashAPI.swift in Sources */,
-				A757740A1EB0A10A004FC921 /* BaseModel.swift in Sources */,
+				A757740D1EB0A10A004FC921 /* SampleAPI.swift in Sources */,
 				A75774271EB0BF74004FC921 /* BookModel.swift in Sources */,
 				A75774171EB0AB0B004FC921 /* ReusableCells.swift in Sources */,
 				A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */,

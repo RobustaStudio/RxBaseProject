@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,16 +27,26 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xmk-dZ-U5s">
                         <rect key="frame" x="8" y="8" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="Ac9-jA-rHG"/>
-                            <constraint firstAttribute="width" secondItem="Xmk-dZ-U5s" secondAttribute="height" multiplier="1:1" id="Ck7-Pw-gmA"/>
+                            <constraint firstAttribute="width" constant="60" id="Tyg-xs-mTS"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRq-Vf-HLN">
+                        <rect key="frame" x="8" y="75" width="312" height="1"/>
+                        <color key="backgroundColor" red="0.60554766410000005" green="0.60554766410000005" blue="0.60554766410000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ueV-m3-V5X"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="9HF-di-PMf" secondAttribute="trailing" constant="8" id="7Sb-jb-GPs"/>
-                    <constraint firstAttribute="bottom" secondItem="Xmk-dZ-U5s" secondAttribute="bottom" constant="8" id="8Q8-le-smc"/>
+                    <constraint firstItem="rRq-Vf-HLN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="EKf-FM-XyO"/>
+                    <constraint firstItem="Xmk-dZ-U5s" firstAttribute="centerY" secondItem="9HF-di-PMf" secondAttribute="centerY" id="Kws-5p-5bN"/>
+                    <constraint firstItem="Xmk-dZ-U5s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Lmr-Ug-wBH"/>
                     <constraint firstItem="9HF-di-PMf" firstAttribute="leading" secondItem="Xmk-dZ-U5s" secondAttribute="trailing" constant="9" id="OuQ-Dp-aHg"/>
-                    <constraint firstItem="Xmk-dZ-U5s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="b2I-mH-TGL"/>
+                    <constraint firstAttribute="bottom" secondItem="Xmk-dZ-U5s" secondAttribute="bottom" constant="8" id="U1V-ZA-Dri"/>
+                    <constraint firstAttribute="trailing" secondItem="rRq-Vf-HLN" secondAttribute="trailing" id="Zrv-j0-ruP"/>
+                    <constraint firstAttribute="bottom" secondItem="rRq-Vf-HLN" secondAttribute="bottom" id="j6K-6E-68W"/>
                     <constraint firstItem="Xmk-dZ-U5s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jUq-xh-wmt"/>
                     <constraint firstItem="9HF-di-PMf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="wT1-2M-aUG"/>
                     <constraint firstAttribute="bottom" secondItem="9HF-di-PMf" secondAttribute="bottom" constant="8" id="yeS-0C-mXe"/>

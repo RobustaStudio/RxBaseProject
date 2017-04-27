@@ -16,13 +16,13 @@ class NewsListViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let viewModel:ExampleViewModelType = ExampleViewModel()
+    let viewModel:NewsListViewModelType = NewsListViewModel()
     let dataSource = RxTableViewSectionedReloadDataSource<NewListSection>()
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.reloadTrigger.onNext(())
+//        viewModel.reloadTrigger.onNext(())
     }
     
     override func configureView() {
@@ -49,16 +49,14 @@ class NewsListViewController: BaseViewController {
             .bindTo(viewModel.viewWillAppear)
             .addDisposableTo(self.disposeBag)
         
-        
         self.refreshControl.rx
             .controlEvent(.valueChanged)
-            //            .filter({ self.refreshControl.isRefreshing }) -> Causes Memory leak
             .bindTo(self.viewModel.reloadTrigger)
             .addDisposableTo(self.disposeBag)
         
-        
-        viewModel.sections.asObservable().subscribe{[weak self] _ in
-            self?.refreshControl.endRefreshing()
+        viewModel.sections.asObservable()
+            .subscribe{[weak self] _ in
+                self?.refreshControl.endRefreshing()
             }.addDisposableTo(self.disposeBag)
         
         viewModel.sections

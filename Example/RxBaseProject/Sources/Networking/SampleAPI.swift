@@ -1,6 +1,6 @@
 //
-//  MiniCashAPI.swift
-//  MiniCash
+//  SampleAPI.swift
+//  RxBaseProject
 //
 //  Created by Ahmed Mohamed Fareed on 2/2/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.

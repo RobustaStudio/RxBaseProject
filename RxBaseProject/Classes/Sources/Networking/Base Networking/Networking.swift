@@ -103,7 +103,6 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
         }
         
         return actualRequest.asObservable()
-            .debug()
             .filterSuccessfulStatusCodes()
 //            .do(onError: { (e) in
 //                guard let error = e as? Moya.MoyaError else { throw e }
@@ -116,15 +115,14 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
 //MARK:- Static NetworkingType methods
 extension NetworkingType {
     
-    public static func `default`() -> Networking<T> {
-        return Networking(provider: newProvider(T.self,[]))
+    public static func `default`(allowExtensiveDebuging:Bool=false) -> Networking<T> {
+        var plugins:[PluginType] = []
+        if allowExtensiveDebuging {
+            plugins = [NetworkLoggerPlugin(verbose: false)]
+        }
+        return Networking(provider: newProvider(T.self,plugins))
     }
 
-    public static func new() -> Networking<T> {
-        return Networking(provider: newProvider(T.self, []))
-    }
-   
-    
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: TargetType, T:AccessTokenAuthorizable {
         return { target in
             

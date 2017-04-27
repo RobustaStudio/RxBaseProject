@@ -17,9 +17,6 @@ public protocol BaseViewModelType : class {
     var viewDidLoad: PublishSubject<Void> { get }
     var viewDidDeallocate: PublishSubject<Void> { get }
     var viewWillAppear: PublishSubject<Bool> { get }
-
-    // Output
-    var tableViewPlaceholderText:Driver<String> {get}
 }
 
 open class BaseViewModel: BaseViewModelType {
@@ -29,40 +26,39 @@ open class BaseViewModel: BaseViewModelType {
     open let viewDidDeallocate = PublishSubject<Void>()
     open let viewWillAppear = PublishSubject<Bool>()
     
-    // output
-    open var tableIsLoading = Variable<String>("")
-    open var tableViewPlaceholderText = Driver<String>.empty()
-    
     // Variables
     open let dBag:DisposeBag = DisposeBag()
     
     /// Returns an instant from MiniCashViewModel
     public init() {
-        tableViewPlaceholderText = tableIsLoading.asObservable().asDriver(onErrorJustReturn: "")
     }
     
-    public func placeholderTextBaseOn<T:Any>(triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
-        viewWillAppear.asObservable().subscribe(onNext: {[weak self] (_) in
-            self?.tableIsLoading.value = NSLocalizedString("Loading", comment: "")
+    public func placeholderTextBaseOn<T:Any>(tableViewPlaceHolderText:inout Driver<String>,triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
+        let tableIsLoading = Variable<String>("")
+
+        viewWillAppear.asObservable().subscribe(onNext: {(_) in
+            tableIsLoading.value = NSLocalizedString("Loading", comment: "")
         }).addDisposableTo(dBag)
         
         if let _triger = triger  {
-            _triger.asObservable().subscribe(onNext: {[weak self] (_) in
+            _triger.asObservable().subscribe(onNext: {(_) in
                 if let text = loadingText {
-                    self?.tableIsLoading.value = NSLocalizedString(text, comment: "")
+                    tableIsLoading.value = NSLocalizedString(text, comment: "")
                 }else {
-                    self?.tableIsLoading.value = NSLocalizedString("Loading", comment: "")
+                    tableIsLoading.value = NSLocalizedString("Loading", comment: "")
                 }
             }).addDisposableTo(dBag)
         }
         
-        data.asObservable().subscribe(onNext: {[weak self] (data) in
+        data.asObservable().subscribe(onNext: {(data) in
             if let text = emptyText {
-                self?.tableIsLoading.value = NSLocalizedString(text, comment: "")
+                tableIsLoading.value = NSLocalizedString(text, comment: "")
             }else {
-                self?.tableIsLoading.value = NSLocalizedString("Empty", comment: "")
+                tableIsLoading.value = NSLocalizedString("Empty", comment: "")
             }
         }).addDisposableTo(dBag)
+        
+        tableViewPlaceHolderText = tableIsLoading.asDriver()
     }
 }
 

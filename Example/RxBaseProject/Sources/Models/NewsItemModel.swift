@@ -8,10 +8,8 @@
 
 import Foundation
 import ObjectMapper
+import RxBaseProject
 
-//enum UpdateStatus {
-//    case day
-//}
 
 class NewsItemModel: BaseModel {
     

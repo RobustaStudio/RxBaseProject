@@ -9,6 +9,7 @@
 import Foundation
 
 import ObjectMapper
+import RxBaseProject
 
 class BookModel: BaseModel {
     

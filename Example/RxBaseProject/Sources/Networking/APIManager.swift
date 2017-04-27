@@ -20,7 +20,7 @@ import RxBaseProject
 class APIManager  {
     
     static let shared:APIManager = APIManager()
-    fileprivate static var network:Networking<SampleAPI> = Networking<SampleAPI>.default()
+    fileprivate static var network:Networking<SampleAPI> = Networking<SampleAPI>.default(allowExtensiveDebuging: true)
     fileprivate static  var provider:OnlineProvider<SampleAPI> {
         return network.provider
     }
@@ -28,6 +28,6 @@ class APIManager  {
     
     //MARK:- General
     func getNews() -> Observable<NewsModel> {
-        return APIManager.provider.request(.newsList()).mapObject(NewsModel.self).debug()
+        return APIManager.provider.request(.newsList()).mapObject(NewsModel.self)
     }
 }
