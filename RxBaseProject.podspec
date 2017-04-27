@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 	s.source           = { :git => 'gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git', :tag => s.version.to_s }
 	s.source_files = 'RxBaseProject/Classes/**/*'
 	s.ios.deployment_target = '9.0'
-	s.preserve_path = 'RxBaseProject/Classes/*'
+	s.preserve_path = 'RxBaseProject/Classes/**/*'
 	s.frameworks = 'UIKit'
 	
 	#################
