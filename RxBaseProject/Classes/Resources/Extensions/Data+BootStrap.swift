@@ -8,7 +8,7 @@
 
 import Foundation
 extension Data {
-    public func stubbedResponse(jsonFileName filename: String) -> Data! {
+    public static func stubbedResponse(jsonFileName filename: String) -> Data! {
         @objc class TestClass: NSObject { }
         
         let bundle = Bundle(for: TestClass.self)

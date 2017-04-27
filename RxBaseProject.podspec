@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.2'
+	s.version          = '0.2.3'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
 	s.dependency 'Kingfisher' ,       '~> 3.6.1'
 	s.dependency 'ReusableKit' ,      '~> 1.1.0'
 	s.dependency 'RxDataSources' ,    '~>1.0.3'
-	s.dependency 'RxGesture' ,        '~> 1.0.0'
+	# s.dependency 'RxGesture' ,        '~> 1.0.0'
 	# s.dependency 'RxKeyboard' ,     '~>0.4'
 	s.dependency 'RxOptional' ,       '~>3.1.3'
 	s.dependency 'SVProgressHUD',     '~>2.1.2'
