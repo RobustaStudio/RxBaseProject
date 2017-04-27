@@ -75,7 +75,7 @@ extension SampleAPI: BaseAPI {
     var baseURL: URL {
         switch self {
         default:
-            return URL(string: "https://api.nytimes.com")!
+            return URL(string: AppSetup.shared.url)!
         }
         
     }

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import RxBaseProject
+import Then
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        AppSetup.shared.setURLs(urls:
+            AppURLs(staggingURL: "https://api.nytimes.com",
+                productionURL: "https://api.nytimes.com",
+                imageURLSuffix: "",
+                requestURLSuffix: ""))
+        
+        
         return true
     }
     

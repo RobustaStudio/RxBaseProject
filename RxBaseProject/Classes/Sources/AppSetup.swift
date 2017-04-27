@@ -8,15 +8,22 @@
 
 import Foundation
 
-struct BaseURL {
-    var url:String
-    var staggingURL:String
-    var productionURL:String
-    var imageURLSuffix:String
-    var requestURLSuffix:String
+public class AppURLs {
+    var url:String = ""
+    var staggingURL:String = ""
+    var productionURL:String = ""
+    var imageURLSuffix:String = ""
+    var requestURLSuffix:String = ""
+    
+    public init(staggingURL:String, productionURL:String, imageURLSuffix:String, requestURLSuffix:String) {
+        self.staggingURL = staggingURL
+        self.productionURL = productionURL
+        self.imageURLSuffix = imageURLSuffix
+        self.requestURLSuffix = requestURLSuffix
+    }
 }
 
-struct AppSecurity {
+public class AppSecurity {
     var clientIdKey:String       = "client_id"
     var clientSecretKey:String   = "client_secret"
     var appTokenKey:String       = "app_token"
@@ -27,7 +34,7 @@ struct AppSecurity {
     
     var usingAppToken:Bool = false
     
-    init(clientId:String, clientSecret:String, clientIdKey:String?=nil, clientSecretKey:String?=nil) {
+    public init(clientId:String, clientSecret:String, clientIdKey:String?=nil, clientSecretKey:String?=nil) {
         self.clientIdValue = clientId
         self.clientSecretValue = clientSecret
         
@@ -42,7 +49,7 @@ struct AppSecurity {
         }
     }
     
-    init(appToken:String, tokenKey:String?=nil) {
+    public init(appToken:String, tokenKey:String?=nil) {
         self.appTokenValue = appToken
         self.usingAppToken = true
         if let tKey = tokenKey {
@@ -51,15 +58,36 @@ struct AppSecurity {
     }
 }
 
-public struct AppConfig {
-    var security:AppSecurity?
-    var urls:BaseURL?
+public class AppConfig {
+    fileprivate static let `default` = AppConfig()
+    public var security:AppSecurity?
+    public var urls:AppURLs? {
+        didSet {
+            if urls != nil {
+                if isProduction {
+                    urls!.url = urls!.productionURL
+                }else {
+                    urls!.url = urls!.staggingURL
+                }
+            }
+        }
+    }
     
-    var isProduction:Bool = false
-    var useStubbedApis:Bool = false
-    var allowRefreshToken:Bool = true
+    public var isProduction:Bool = false {
+        didSet {
+            if urls != nil {
+                if isProduction {
+                    urls!.url = urls!.productionURL
+                }else {
+                    urls!.url = urls!.staggingURL
+                }
+            }
+        }
+    }
+    public var useStubbedApis:Bool = false
+    public var allowRefreshToken:Bool = true
     
-    init() {
+    public init() {
         security = nil
         urls = nil
     }
@@ -67,12 +95,18 @@ public struct AppConfig {
 
 public class AppSetup {
     
-    public static var shared:AppSetup = AppSetup(config: AppConfig())
+    public static var shared:AppSetup = AppSetup()
     
-    private var config:AppConfig!
+    public func setSecurity(security:AppSecurity) {
+        config.security = security
+    }
     
-    init(config:AppConfig) {
-        self.config = config
+    public func setURLs(urls:AppURLs) {
+        config.urls = urls
+    }
+    
+    private var config:AppConfig {
+       return AppConfig.default
     }
     
     public var usingProduction:Bool {
