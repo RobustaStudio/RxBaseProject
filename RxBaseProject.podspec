@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.1'
+	s.version          = '0.2.2'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 	s.source           = { :git => 'gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git', :tag => s.version.to_s }
 	s.source_files = 'RxBaseProject/Classes/**/*'
 	s.ios.deployment_target = '9.0'
-	s.preserve_path = 'RxBaseProject/Classes/**/*'
+	s.preserve_path = 'RxBaseProject/Classes/**/*.{h,m,swift}'
 	s.frameworks = 'UIKit'
 	
 	#################
