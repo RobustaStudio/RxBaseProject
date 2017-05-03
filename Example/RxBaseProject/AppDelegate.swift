@@ -2,12 +2,11 @@
 //  AppDelegate.swift
 //  RxBaseProject
 //
-//  Created by ahmed93 on 04/11/2017.
-//  Copyright (c) 2017 ahmed93. All rights reserved.
+//  Created by Ahmed Mohamed Fareed on 5/3/17.
+//  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import UIKit
-import RxBaseProject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Config.shared.configure(con: [AppConfigurations.staggingURLValue:"https://api.nytimes.com"])
+        print("asddsasdaasd")
+        
+        // Override point for customization after application launch.
+//        Config.shared.configure(con: [AppConfigurations.staggingURLValue:"https://api.nytimes.com"])
         
         return true
     }
@@ -42,4 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
 }
+

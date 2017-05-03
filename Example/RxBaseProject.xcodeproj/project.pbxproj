@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B0F43AE3C9EE78033D6EF7B /* Pods_RxBaseProject_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773F31EB0A10A004FC921 /* AppDelegate.swift */; };
 		A75774081EB0A10A004FC921 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A75773F41EB0A10A004FC921 /* Info.plist */; };
 		A75774091EB0A10A004FC921 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A75773F61EB0A10A004FC921 /* Images.xcassets */; };
 		A757740B1EB0A10A004FC921 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75773FA1EB0A10A004FC921 /* NewsModel.swift */; };
@@ -26,6 +25,7 @@
 		A75774231EB0ACFD004FC921 /* NewListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774221EB0ACFD004FC921 /* NewListCellViewModel.swift */; };
 		A75774251EB0BEE4004FC921 /* NewsItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774241EB0BEE4004FC921 /* NewsItemModel.swift */; };
 		A75774271EB0BF74004FC921 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75774261EB0BF74004FC921 /* BookModel.swift */; };
+		A7D203EB1EB9CB570048A6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D203EA1EB9CB570048A6E3 /* AppDelegate.swift */; };
 		A7E1BFDB1E9D570F00ADFE30 /* RxBaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */; };
 		ADEEE02BEBB631C8FF690B94 /* Pods_RxBaseProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E56473E7AF5B7A97AD8D976 /* Pods_RxBaseProject_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -50,7 +50,6 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		739050438DD8FD7963974660 /* Pods-RxBaseProject_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8AA8BE8E1FED9EB0FB4FE603 /* Pods_RxBaseProject_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxBaseProject_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A75773F31EB0A10A004FC921 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A75773F41EB0A10A004FC921 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75773F61EB0A10A004FC921 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A75773FA1EB0A10A004FC921 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		A75774221EB0ACFD004FC921 /* NewListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListCellViewModel.swift; sourceTree = "<group>"; };
 		A75774241EB0BEE4004FC921 /* NewsItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemModel.swift; sourceTree = "<group>"; };
 		A75774261EB0BF74004FC921 /* BookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		A7D203EA1EB9CB570048A6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E1BFDA1E9D570F00ADFE30 /* RxBaseProject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBaseProject.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/RxBaseProject-euvqiasqwlhcuhceyilatpbpurvu/Build/Products/Debug-iphonesimulator/RxBaseProject/RxBaseProject.framework"; sourceTree = "<group>"; };
 		B832396BBEB3661C6BA8FB01 /* RxBaseProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxBaseProject.podspec; path = ../RxBaseProject.podspec; sourceTree = "<group>"; };
 		C5639C4C3E4FD6E26611AD0C /* Pods-RxBaseProject_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxBaseProject_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxBaseProject_Example/Pods-RxBaseProject_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,10 +156,10 @@
 		A75773F21EB0A10A004FC921 /* RxBaseProject */ = {
 			isa = PBXGroup;
 			children = (
-				A75773F31EB0A10A004FC921 /* AppDelegate.swift */,
 				A75773F41EB0A10A004FC921 /* Info.plist */,
 				A75773F71EB0A10A004FC921 /* Sources */,
 				A75773F51EB0A10A004FC921 /* Resources */,
+				A7D203EA1EB9CB570048A6E3 /* AppDelegate.swift */,
 			);
 			path = RxBaseProject;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		45988B8A6C8E81B5ADF3FE22 /* [CP] Copy Pods Resources */ = {
@@ -472,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -482,7 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */,
+				A7D203EB1EB9CB570048A6E3 /* AppDelegate.swift in Sources */,
 				A75774211EB0ACE3004FC921 /* NewsListViewModel.swift in Sources */,
 				A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */,
 				A757740B1EB0A10A004FC921 /* NewsModel.swift in Sources */,
