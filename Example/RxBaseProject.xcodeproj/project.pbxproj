@@ -156,10 +156,10 @@
 		A75773F21EB0A10A004FC921 /* RxBaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				A7D203EA1EB9CB570048A6E3 /* AppDelegate.swift */,
 				A75773F41EB0A10A004FC921 /* Info.plist */,
 				A75773F71EB0A10A004FC921 /* Sources */,
 				A75773F51EB0A10A004FC921 /* Resources */,
-				A7D203EA1EB9CB570048A6E3 /* AppDelegate.swift */,
 			);
 			path = RxBaseProject;
 			sourceTree = "<group>";

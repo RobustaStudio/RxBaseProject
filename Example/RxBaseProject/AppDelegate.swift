@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RxBaseProject
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -15,10 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        print("asddsasdaasd")
-        
+	        
         // Override point for customization after application launch.
-//        Config.shared.configure(con: [AppConfigurations.staggingURLValue:"https://api.nytimes.com"])
+        Config.shared.configure(con: [AppConfigurations.staggingURLValue:"https://api.nytimes.com"])
         
         return true
     }

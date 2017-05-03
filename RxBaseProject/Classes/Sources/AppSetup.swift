@@ -38,7 +38,6 @@ public func == (lhs: AppConfigurations, rhs: AppConfigurations) -> Bool {
     return false
 }
 
-
 public class _URLs {
     var url:String = ""
     var staggingURL:String = ""
@@ -71,9 +70,9 @@ class _Security {
     
     var usingAppToken:Bool = false
     
-    public init(clientId:String, clientSecret:String, clientIdKey:String?=nil, clientSecretKey:String?=nil) {
-        self.clientIdValue = clientId
-        self.clientSecretValue = clientSecret
+    init(clientId:String?, clientSecret:String?, clientIdKey:String?=nil, clientSecretKey:String?=nil) {
+        self.clientIdValue = clientId ?? ""
+        self.clientSecretValue = clientSecret ?? ""
         
         self.usingAppToken = false
         
@@ -86,8 +85,8 @@ class _Security {
         }
     }
     
-    public init(appToken:String, tokenKey:String?=nil) {
-        self.appTokenValue = appToken
+    init(appToken:String?, tokenKey:String?=nil) {
+        self.appTokenValue = appToken ?? ""
         self.usingAppToken = true
         if let tKey = tokenKey {
             self.appTokenKey = tKey
@@ -116,21 +115,21 @@ public class Config {
     
     public func configure(con:[AppConfigurations:Any]) {
         
-        self.security = _Security(clientId: con[AppConfigurations.clientIdValue] as! String,
-                                  clientSecret: con[AppConfigurations.clientSecretValue] as! String,
-                                  clientIdKey: con[AppConfigurations.clientIdKey] as! String,
-                                  clientSecretKey: con[AppConfigurations.clientSecretKey] as! String)
+        self.security = _Security(clientId: con[AppConfigurations.clientIdValue] as? String,
+                                  clientSecret: con[AppConfigurations.clientSecretValue] as? String,
+                                  clientIdKey: con[AppConfigurations.clientIdKey] as? String,
+                                  clientSecretKey: con[AppConfigurations.clientSecretKey] as? String)
         
         
-        self.urls = _URLs(staggingURL: con[AppConfigurations.staggingURLValue] as! String,
-                          productionURL: con[AppConfigurations.productionURLValue] as! String,
-                          imageURLSuffix: con[AppConfigurations.imageURLSuffixValue] as! String,
-                          requestURLSuffix: con[AppConfigurations.requestURLSuffixValue] as! String)
+        self.urls = _URLs(staggingURL: con[AppConfigurations.staggingURLValue] as? String,
+                          productionURL: con[AppConfigurations.productionURLValue] as? String,
+                          imageURLSuffix: con[AppConfigurations.imageURLSuffixValue] as? String,
+                          requestURLSuffix: con[AppConfigurations.requestURLSuffixValue] as? String)
         
         if let productStatus = con[AppConfigurations.isProduction] as? Bool {
             self.isProduction = productStatus
         }else {
-            
+            self.isProduction = false
         }
         
         if let allowRefeshToken = con[AppConfigurations.usingRefreshToken] as? Bool {

@@ -35,20 +35,21 @@ open class BaseViewModel: BaseViewModelType {
     
     public func placeholderTextBaseOn<T:Any>(tableViewPlaceHolderText:inout Driver<String>,triger:PublishSubject<Void>? = nil, data:Observable<T>, loadingText:String? = nil, emptyText:String? = nil) {
         let tableIsLoading = Variable<String>("")
+        tableViewPlaceHolderText = tableIsLoading.asDriver()
 
         viewWillAppear.asObservable().subscribe(onNext: {(_) in
             tableIsLoading.value = NSLocalizedString("Loading", comment: "")
         }).addDisposableTo(dBag)
         
-        if let _triger = triger  {
-            _triger.asObservable().subscribe(onNext: {(_) in
-                if let text = loadingText {
-                    tableIsLoading.value = NSLocalizedString(text, comment: "")
-                }else {
-                    tableIsLoading.value = NSLocalizedString("Loading", comment: "")
-                }
-            }).addDisposableTo(dBag)
-        }
+//        if let _triger = triger  {
+//            _triger.asObservable().subscribe(onNext: {(_) in
+//                if let text = loadingText {
+//                    tableIsLoading.value = NSLocalizedString(text, comment: "")
+//                }else {
+//                    tableIsLoading.value = NSLocalizedString("Loading", comment: "")
+//                }
+//            }).addDisposableTo(dBag)
+//        }
         
         data.asObservable().subscribe(onNext: {(data) in
             if let text = emptyText {
@@ -58,7 +59,6 @@ open class BaseViewModel: BaseViewModelType {
             }
         }).addDisposableTo(dBag)
         
-        tableViewPlaceHolderText = tableIsLoading.asDriver()
     }
 }
 

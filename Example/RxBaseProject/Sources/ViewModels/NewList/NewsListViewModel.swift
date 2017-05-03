@@ -38,23 +38,16 @@ class NewsListViewModel: BaseViewModel , NewsListViewModelType {
             .debounce(0.3, scheduler: MainScheduler.instance)
             .flatMapLatest { (_) -> Observable<NewsModel> in
                 return APIManager.shared.getNews()
-            }.do(onNext: { (s) in
-              print(s)
-            })
+            }
 
         let onViewData = self.viewWillAppear
             .asObservable()
-            .withLatestFrom(APIManager.shared.getNews())
-            .do(onNext: { (s) in
-                print(s)
+            .flatMapLatest({ (_) -> Observable<NewsModel> in
+                return APIManager.shared.getNews()
             })
         
         let loadedData = Observable.of(reloadedData, onViewData)
             .merge()
-            .do(onNext: { (mew) in
-                print("asd")
-                print(mew)
-            })
         
         self.sections = loadedData.map({ (model) -> [NewListSection] in
             var list:[NewListCellViewModel] = []
@@ -64,6 +57,6 @@ class NewsListViewModel: BaseViewModel , NewsListViewModelType {
             return [NewListSection(model: Void(), items: list)]
         }).asDriver(onErrorJustReturn: [])
         
-        self.placeholderTextBaseOn(tableViewPlaceHolderText: &tableViewPlaceholderText, data: loadedData)
+//        self.placeholderTextBaseOn(tableViewPlaceHolderText: &tableViewPlaceholderText, data: loadedData)
     }
 }

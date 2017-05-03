@@ -16,7 +16,7 @@ class NewsListViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let viewModel:NewsListViewModelType = NewsListViewModel()
+    var viewModel:NewsListViewModelType!
     let dataSource = RxTableViewSectionedReloadDataSource<NewListSection>()
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
@@ -27,6 +27,9 @@ class NewsListViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+        
+        viewModel = NewsListViewModel()
+        
         self.title = "News List"
         self.tableView = tableView.then {
             $0.register(Reusable.newsCell)
