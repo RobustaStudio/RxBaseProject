@@ -75,7 +75,7 @@ extension SampleAPI: BaseAPI {
     var baseURL: URL {
         switch self {
         default:
-            return URL(string: AppSetup.shared.url)!
+            return URL(string: Config.shared.url)!
         }
         
     }

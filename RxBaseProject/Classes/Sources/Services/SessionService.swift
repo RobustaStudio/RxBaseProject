@@ -30,7 +30,7 @@ public protocol SessionServiceType {
     func logout()
     func forceLogout(title:String, message:String)
     
-    func refreshToken()
+    func refreshToken() -> Observable<String?>
     func beforeLogoutHandler()
     func afterLoginHandler()
 }
@@ -99,7 +99,10 @@ public class SessionService: SessionServiceType {
 }
 
 extension SessionService {
-    public func refreshToken() {}
+    
+    open func refreshToken() -> Observable<String?> {
+        return Observable.empty()
+    }
     
     public func afterLoginHandler() {}
     

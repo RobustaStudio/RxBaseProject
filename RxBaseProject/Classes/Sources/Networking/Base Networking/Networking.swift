@@ -52,10 +52,8 @@ public class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: BaseAP
     }
 }
 
-
 protocol NetworkingType {
     associatedtype T: BaseAPI
-    
     var provider: OnlineProvider<T> { get }
 }
 
@@ -64,51 +62,25 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
     public let provider: OnlineProvider<API>
 
     /// Request to fetch and store new XApp token if the current token is missing or expired.
+    ///
+    /// - Returns: Observable of accessToken or nil
     private func XAppTokenRequest() -> Observable<String?> {
-        
         // If we have a valid token, return it and forgo a request for a fresh one.
         if let xtoken = SessionService.shared.xToken {
             return Observable.just(xtoken)
         }
-
-        let newTokenRequest:Observable<String?> = Observable.empty()
-        
-//        let newTokenRequest = self.provider.request(BaseAPI.refreshToken())
-//            .filterSuccessfulStatusCodes()
-//            .mapJSON()
-//            .map { element -> (token: String?, expiry: String?) in
-//                guard let dictionary = element as? NSDictionary else { return (token: nil, expiry: nil) }
-//                
-//                return (token: dictionary["xapp_token"] as? String, expiry: dictionary["expires_in"] as? String)
-//            }
-//            .do(onNext: { element in
-//                // These two lines set the defaults values injected into appToken
-//                appToken.token = element.0
-//                appToken.expiry = KioskDateFormatter.fromString(element.1 ?? "")
-//            })
-//            .map { (token, expiry) -> String? in
-//                return token
-//            }
-//            .logError()
-        return newTokenRequest
+        return SessionService.shared.refreshToken()
     }
 
-    
     /// Request to fetch a given target. Ensures that valid XApp tokens exist before making request
     public func request(_ token: API, model:BaseModel?=nil) -> Observable<Response> {
         let actualRequest = self.provider.request(token)
-        
-        if token.shouldAuthorize && AppSetup.shared.allowRefreshToken {
+        if token.shouldAuthorize && Config.shared.usingRefreshToken {
             return self.XAppTokenRequest().flatMap { _ in actualRequest }
         }
-        
-        return actualRequest.asObservable()
+        return actualRequest
+            .asObservable()
             .filterSuccessfulStatusCodes()
-//            .do(onError: { (e) in
-//                guard let error = e as? Moya.MoyaError else { throw e }
-//                let reError = GenericError(error: error)
-//                print(reError.errorMessage)
-//            })
     }
 }
 
@@ -123,7 +95,7 @@ extension NetworkingType {
         return Networking(provider: newProvider(T.self,plugins))
     }
 
-    static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: TargetType, T:AccessTokenAuthorizable {
+    static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: BaseAPI {
         return { target in
             
             var endpoint: Endpoint<T> = Endpoint<T>(url: target.baseURL.appendingPathComponent(target.path).absoluteString,
@@ -156,7 +128,7 @@ extension NetworkingType {
     }
     
     static func APIStubBehaviour<T>(_: T) -> Moya.StubBehavior {
-        return AppSetup.shared.usingStubbed ? .immediate : .never
+        return Config.shared.usingStubbed ? .immediate : .never
     }
 }
 

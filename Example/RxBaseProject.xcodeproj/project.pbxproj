@@ -412,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		45988B8A6C8E81B5ADF3FE22 /* [CP] Copy Pods Resources */ = {
@@ -472,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -482,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */,
 				A75774211EB0ACE3004FC921 /* NewsListViewModel.swift in Sources */,
 				A757740C1EB0A10A004FC921 /* APIManager.swift in Sources */,
 				A757740B1EB0A10A004FC921 /* NewsModel.swift in Sources */,
@@ -489,7 +490,6 @@
 				A757740D1EB0A10A004FC921 /* SampleAPI.swift in Sources */,
 				A75774271EB0BF74004FC921 /* BookModel.swift in Sources */,
 				A75774171EB0AB0B004FC921 /* ReusableCells.swift in Sources */,
-				A75774071EB0A10A004FC921 /* AppDelegate.swift in Sources */,
 				A75774231EB0ACFD004FC921 /* NewListCellViewModel.swift in Sources */,
 				A757741D1EB0ACAD004FC921 /* NewsListTableViewCell.swift in Sources */,
 				A75774141EB0A215004FC921 /* NewsListViewController.swift in Sources */,
