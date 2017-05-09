@@ -43,7 +43,7 @@ public class BaseTokenModel: BaseModel {
     
     //MARK:- Model Coding Managing
     
-    func save() {
+    public func save() {
         self.store(self, withKey: "current_session")
     }
     
