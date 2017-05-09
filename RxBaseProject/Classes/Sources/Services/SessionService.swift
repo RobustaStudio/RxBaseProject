@@ -44,7 +44,12 @@ public class SessionService: SessionServiceType {
     
     public var shouldForceLoggout = Driver<Bool>.empty()
     
-    public var user: BaseModel?
+    public var user: BaseModel? {
+        get {
+            return BaseModel.getStoredObject(forKey: "lafarge_user_key") as? BaseModel
+        }
+        set {}
+    }
     
     public var xToken:String? {
         if self.accessTokenIsValid {
