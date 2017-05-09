@@ -1,6 +1,6 @@
 //
-//  Extention+AppDelegate.swift
-//  
+//  Helpers.swift
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/15/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -15,7 +15,7 @@ import SVProgressHUD
 #endif
 
 // MARK: - Static Functions
-class Helpers {
+public class Helpers {
     
     public static func showMessage(title:String, description:String, timer:Bool = false) {
         if description == "" { return }

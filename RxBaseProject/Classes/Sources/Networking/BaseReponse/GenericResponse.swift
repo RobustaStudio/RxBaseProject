@@ -1,6 +1,6 @@
 //
 //  ErrorHandler.swift
-//  
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/18/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -36,7 +36,7 @@ public class GenericError: NSObject {
         
         guard let response = error?.response else {
             statusCode = 0
-            errorMessage = GenericError.ErrorMessage
+            errorMessage = error?.errorDescription ?? GenericError.ErrorMessage
             return
         }
         
