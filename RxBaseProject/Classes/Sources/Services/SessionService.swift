@@ -17,16 +17,18 @@ public enum SessionStatus: Int {
 }
 
 public protocol SessionServiceType {
+    
     static var shared:SessionServiceType {get}
     var shouldForceLoggout:Driver<Bool> {get}
     var status:SessionStatus {get}
     var isValid:Bool {get}
     var accessTokenIsValid:Bool {get}
     var xToken:String?  {get}
+    var user: BaseModel? { get }
     // functions
     
     func update(loggedIn:Bool)
-    func login()
+    func userLoggedIn<T:BaseModel>(user:T, type:T.Type, accessToken:BaseTokenModel)
     func logout()
     func forceLogout(title:String, message:String)
     
@@ -41,6 +43,8 @@ public class SessionService: SessionServiceType {
     public static var shared:SessionServiceType = SessionService()
     
     public var shouldForceLoggout = Driver<Bool>.empty()
+    
+    public var user: BaseModel?
     
     public var xToken:String? {
         if self.accessTokenIsValid {
@@ -108,8 +112,10 @@ extension SessionService {
     
     public func beforeLogoutHandler() {}
     
-    public func login() {
+    public func userLoggedIn<T:BaseModel>(user:T, type:T.Type, accessToken:BaseTokenModel) {
         self.update(loggedIn: true)
+        self.user = user
+        self.accessToken = accessToken
         afterLoginHandler()
     }
     
