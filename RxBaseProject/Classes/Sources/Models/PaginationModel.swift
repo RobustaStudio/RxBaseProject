@@ -11,18 +11,18 @@ import ObjectMapper
 
 open class PaginationModel<Type:BaseModel>: BaseModel {
     
-    var totalCount:Int?
-    var perPage:Int?
-    var currentPage:Int?
-    var lastPage:Int?
+    public var totalCount:Int?
+    public var perPage:Int?
+    public var currentPage:Int?
+    public var lastPage:Int?
     
-    var nextPageUrl:String?
-    var prevPageUrl:String?
+    public var nextPageUrl:String?
+    public var prevPageUrl:String?
     
-    var fromId:Int?
-    var toId:Int?
+    public var fromId:Int?
+    public var toId:Int?
     
-    var list:[Type]!
+    public var list:[Type]!
     
     open override func mapping(map: Map) {
         super.mapping(map: map)
