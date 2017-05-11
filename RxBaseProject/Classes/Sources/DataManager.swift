@@ -1,6 +1,6 @@
 //
 //  Formatter.swift
-//  
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/26/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -10,60 +10,60 @@ import UIKit
 
 public final class DataManager: NSObject {
     fileprivate override init() { super.init() }
-
+    
     /// Formatter With formate yyyy-MM-dd HH:mm:ss
-    static var sharedDateFormatter: DateFormatter = {
+    public static var sharedDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter
     }()
     
     /// Formatter With formate yyyy-MM-DD
-    static var sharedFormatter: DateFormatter = {
+    public static var sharedFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }()
     
     /// Formatter With formate MMMM, DD, yyyy
-    static var sharedSMSFormatter: DateFormatter = {
+    public static var sharedSMSFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM, dd, yyyy"
         return dateFormatter
     }()
     
     /// Formatter With formate yyyy-MM-DD
-    static var sharedDOBFormatter: DateFormatter = {
+    public static var sharedDOBFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }()
     
     /// Formatter With formate DD MMMM yyyy
-    static var sharedCampaignRecipientsFormatter: DateFormatter = {
+    public static var sharedCampaignRecipientsFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
-//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter
     }()
     
     /// Formatter With formate DD/MM/yyyy
-    static var sharedDefaultFormatter: DateFormatter = {
+    public static var sharedDefaultFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter
     }()
     
     /// Formatter With formate MM/DD/yyyy
-    static var sharedDefaultFormatter2: DateFormatter = {
+    public static var sharedDefaultFormatter2: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         return dateFormatter
     }()
     
     
-    static var sharedNumberDecimalFormatter: NumberFormatter = {
+    public static var sharedNumberDecimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
