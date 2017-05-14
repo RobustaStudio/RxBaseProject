@@ -108,7 +108,7 @@ extension NetworkingType {
             
             // If we were given an xAccessToken, add it
             if let xAccessToken = SessionService.shared.xToken {
-                endpoint = endpoint.adding(httpHeaderFields: ["Authorization": "Bearer \(xAccessToken)", "Content-Type":"application/json", "Accept":"application/json"])
+                return endpoint.adding(httpHeaderFields: ["Authorization": "Bearer \(xAccessToken)", "Content-Type":"application/json", "Accept":"application/json"])
             }
             
             // non-XAuth token requests

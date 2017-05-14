@@ -38,7 +38,12 @@ public protocol SessionServiceType {
 }
 
 public class SessionService: SessionServiceType {
-    var accessToken:BaseTokenModel?
+    var accessToken:BaseTokenModel? {
+        get {
+            return BaseTokenModel.getStoredObject(forKey: "current_session") as? BaseTokenModel
+        }
+        set {}
+    }
     
     public static var shared:SessionServiceType = SessionService()
     
