@@ -1,6 +1,6 @@
 //
-//  Extention+AppDelegate.swift
-//  
+//  Helpers.swift
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/15/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -15,7 +15,7 @@ import SVProgressHUD
 #endif
 
 // MARK: - Static Functions
-class Helpers {
+public class Helpers {
     
     public static func showMessage(title:String, description:String, timer:Bool = false) {
         if description == "" { return }
@@ -35,7 +35,6 @@ class Helpers {
     
     public static func showLoadingProgress() {
         DispatchQueue.main.async {
-            Helpers.dismissKeyboard()
             SVProgressHUD.setDefaultMaskType(.black)
             SVProgressHUD.show()
         }
@@ -43,13 +42,8 @@ class Helpers {
     
     public static func dismissLoadingProgress() {
         DispatchQueue.main.async {
-            Helpers.dismissKeyboard()
             SVProgressHUD.dismiss()
         }
-    }
-    
-    public static func dismissKeyboard() {
-        Helpers.currentViewController()?.view.endEditing(true)
     }
     
     public static func currentViewController() -> UIViewController? {
@@ -60,25 +54,22 @@ class Helpers {
 
 // MARK:- Helpers RxExtention
 extension ObservableType {
-    func dismissKeyboard() -> Observable<E> {
-        return self.do(onNext: { (_) in
-            Helpers.dismissKeyboard()
-        })
-    }
+    //    func dismissKeyboard() -> Observable<E> {
+    //        return self.do(onNext: { (_) in
+    //            Helpers.dismissKeyboard()
+    //        })
+    //    }
     
-    func block() -> Observable<E> {
+    public func showLoadingView() -> Observable<E> {
         return self.do(onNext: { (_) in
-            Helpers.dismissKeyboard()
             Helpers.showLoadingProgress()
         })
     }
     
-    func unblock() -> Observable<E> {
+    public func dismissLoadingView() -> Observable<E> {
         return self.do(onNext: { (_) in
             Helpers.dismissLoadingProgress()
         }, onError: { (_) in
-            Helpers.dismissLoadingProgress()
-        }, onCompleted: {
             Helpers.dismissLoadingProgress()
         })
     }

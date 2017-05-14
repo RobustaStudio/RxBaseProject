@@ -14,7 +14,7 @@ open class BaseModel: NSObject, Mappable, NSCoding {
     
     public var details:NSMutableDictionary! = NSMutableDictionary()
     
-    override init() { super.init()}
+    public override init() { super.init()}
     
     required public init?(map: Map) {}
     

@@ -1,6 +1,6 @@
 //
 //  Networking.swift
-//  
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/5/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -60,7 +60,7 @@ protocol NetworkingType {
 public struct Networking<API>: NetworkingType where API: BaseAPI {
     
     public let provider: OnlineProvider<API>
-
+    
     /// Request to fetch and store new XApp token if the current token is missing or expired.
     ///
     /// - Returns: Observable of accessToken or nil
@@ -71,16 +71,18 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
         }
         return SessionService.shared.refreshToken()
     }
-
+    
     /// Request to fetch a given target. Ensures that valid XApp tokens exist before making request
     public func request(_ token: API, model:BaseModel?=nil) -> Observable<Response> {
         let actualRequest = self.provider.request(token)
+        
         if token.shouldAuthorize && Config.shared.usingRefreshToken {
             return self.XAppTokenRequest().flatMap { _ in actualRequest }
         }
         return actualRequest
             .asObservable()
             .filterSuccessfulStatusCodes()
+            .debug()
     }
 }
 
@@ -94,7 +96,7 @@ extension NetworkingType {
         }
         return Networking(provider: newProvider(T.self,plugins))
     }
-
+    
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: BaseAPI {
         return { target in
             
@@ -110,11 +112,12 @@ extension NetworkingType {
             }
             
             // non-XAuth token requests
-            if target.shouldAuthorize {
-                return endpoint.adding(httpHeaderFields:[:])
-            } else {
-                return endpoint
-            }
+            return endpoint.adding(httpHeaderFields: Config.shared.headers())
+            //            if target.shouldAuthorize {
+            //
+            //            } else {
+            //                return endpoint
+            //            }
         }
     }
     

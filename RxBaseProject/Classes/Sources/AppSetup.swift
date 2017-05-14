@@ -1,6 +1,6 @@
 //
 //  AppSetup.swift
-//  
+//
 //
 //  Created by Ahmed Mohamed Fareed on 2/2/17.
 //  Copyright © 2017 Ahmed Mohamed Magdi. All rights reserved.
@@ -112,6 +112,16 @@ public class Config {
         }
     }
     var refreshTokenStatus:Bool = false
+    
+    public func headers() -> [String:String] {
+        guard let _security = security else {return [:]}
+        
+        if _security.usingAppToken {
+            return ["Content-Type":"application/json", "Accept":"application/json", _security.appTokenKey:_security.appTokenValue]
+        }else {
+            return ["Content-Type":"application/json", "Accept":"application/json", _security.clientIdKey: _security.clientIdValue, _security.clientSecretKey:_security.clientSecretValue]
+        }
+    }
     
     public func configure(con:[AppConfigurations:Any]) {
         

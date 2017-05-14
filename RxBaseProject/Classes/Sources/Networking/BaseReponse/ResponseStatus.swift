@@ -1,11 +1,11 @@
-enum ResponseStatus {
+public enum ResponseStatus {
     case OK
     case Failed(message: String)
 }
 
 extension ResponseStatus: Equatable {}
 
-func == (lhs: ResponseStatus, rhs: ResponseStatus) -> Bool {
+public func == (lhs: ResponseStatus, rhs: ResponseStatus) -> Bool {
     switch (lhs,rhs) {
     case (.OK, .OK):
         return true
