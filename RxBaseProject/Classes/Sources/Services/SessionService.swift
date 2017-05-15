@@ -33,6 +33,8 @@ public protocol SessionServiceType {
     static var shared:SessionServiceType {get}
     var sessionStatus:Variable<SessionStatus> {get}
     //var status:SessionStatus {get}
+    var refreshTokenCode:String? {get}
+
     var isValid:Bool {get}
     var accessTokenIsValid:Bool {get}
     var xToken:String?  {get}
