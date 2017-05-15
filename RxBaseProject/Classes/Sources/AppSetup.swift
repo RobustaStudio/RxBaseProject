@@ -144,8 +144,6 @@ public class Config {
         
         if let allowRefeshToken = con[AppConfigurations.usingRefreshToken] as? Bool {
             self.refreshTokenStatus = allowRefeshToken
-        }else {
-            self.refreshTokenStatus = false
         }
     }
     

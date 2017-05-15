@@ -98,6 +98,11 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
         return responseObservable.flatMapLatest { (response) -> Observable<Response> in
             switch response.statusCode {
             case 401:
+                if !Config.shared.usingRefreshToken {
+                    SessionService.shared.update(status: .sessionExpired)
+                    return responseObservable
+                }
+                
                 return self.refreshAccessToken().flatMapLatest({ (authenticated) -> Observable<Response> in
                     if authenticated {
                         return self.provider.request(target)
