@@ -13,7 +13,10 @@ import Alamofire
 import RxOptional
 import SVProgressHUD
 
-public protocol BaseAPI:TargetType, AccessTokenAuthorizable {}
+public protocol BaseAPI:TargetType, AccessTokenAuthorizable {
+    
+    var stubbedStatusCode:Int {get}
+}
 
 
 /// Overriding RxMoyaProvider to add custom defaults
@@ -60,29 +63,52 @@ protocol NetworkingType {
 public struct Networking<API>: NetworkingType where API: BaseAPI {
     
     public let provider: OnlineProvider<API>
+    let disposeBag = DisposeBag()
     
     /// Request to fetch and store new XApp token if the current token is missing or expired.
     ///
     /// - Returns: Observable of accessToken or nil
-    private func XAppTokenRequest() -> Observable<String?> {
+    private func refreshAccessToken() -> Observable<Bool> {
         // If we have a valid token, return it and forgo a request for a fresh one.
-        if let xtoken = SessionService.shared.xToken {
-            return Observable.just(xtoken)
+        
+        if SessionService.shared.xToken != nil  {
+            return Observable.just(false)
         }
-        return SessionService.shared.refreshToken()
+        
+        if SessionService.shared.refreshToken != nil {
+            return SessionService.shared.refreshToken!().map({ (accessToken) -> Bool in
+                return true
+            })
+        }
+        else {
+            return Observable.just(false)
+        }
     }
     
     /// Request to fetch a given target. Ensures that valid XApp tokens exist before making request
-    public func request(_ token: API, model:BaseModel?=nil) -> Observable<Response> {
-        let actualRequest = self.provider.request(token)
+    public func request(_ target: API) -> Observable<Response> {
+        let responseObservable = self.provider.request(target)
         
-        if token.shouldAuthorize && Config.shared.usingRefreshToken {
-            return self.XAppTokenRequest().flatMap { _ in actualRequest }
+        if !target.shouldAuthorize {
+            return responseObservable
+                .filterSuccessfulStatusCodes()
+                .debug()
         }
-        return actualRequest
-            .asObservable()
-            .filterSuccessfulStatusCodes()
-            .debug()
+        
+        return responseObservable.flatMapLatest { (response) -> Observable<Response> in
+            switch response.statusCode {
+            case 401:
+                return self.refreshAccessToken().flatMapLatest({ (authenticated) -> Observable<Response> in
+                    if authenticated {
+                        return self.provider.request(target)
+                    }
+                    SessionService.shared.update(status: .sessionExpired)
+                    return responseObservable
+                })
+            default:
+                return responseObservable
+            }
+        }.filterSuccessfulStatusCodes().debug()
     }
 }
 
@@ -100,8 +126,8 @@ extension NetworkingType {
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: BaseAPI {
         return { target in
             
-            var endpoint: Endpoint<T> = Endpoint<T>(url: target.baseURL.appendingPathComponent(target.path).absoluteString,
-                                                    sampleResponseClosure:  {.networkResponse(200, target.sampleData)},
+            let endpoint: Endpoint<T> = Endpoint<T>(url: target.baseURL.appendingPathComponent(target.path).absoluteString,
+                                                    sampleResponseClosure:  {.networkResponse(target.stubbedStatusCode, target.sampleData)},
                                                     method: target.method,
                                                     parameters: target.parameters,
                                                     parameterEncoding: target.parameterEncoding)
@@ -113,11 +139,6 @@ extension NetworkingType {
             
             // non-XAuth token requests
             return endpoint.adding(httpHeaderFields: Config.shared.headers())
-            //            if target.shouldAuthorize {
-            //
-            //            } else {
-            //                return endpoint
-            //            }
         }
     }
     

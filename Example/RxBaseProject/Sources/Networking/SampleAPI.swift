@@ -50,12 +50,19 @@ extension SampleAPI: BaseAPI {
     var sampleData: Data {
         switch self {
         default:
-            return Data(base64Encoded: "{\"status\":{ \"code\": 200, \"message\": \"success\" }")!
+            return Data.stubbedResponse(jsonFileName: "response")//(base64Encoded: "{\"status\":{ \"code\": 200, \"message\": \"success\" }")!
+        }
+    }
+    
+    var stubbedStatusCode: Int {
+        switch self {
+        default:
+            return 500
         }
     }
     
     var shouldAuthorize: Bool {
-        return false
+        return true
     }
     
     var multipartBody: [Moya.MultipartFormData]? {

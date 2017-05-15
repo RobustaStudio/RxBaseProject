@@ -9,72 +9,76 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Moya
+import Alamofire
+
+public enum UserDefaultsKeys:String {
+    case currentUser = "rxProject_user_key"
+    case currentSession = "rxProject_current_session"
+}
+
+private enum PrivateUserDefaultsKeys:String {
+    case isUserLoggedIn = "rxProject_user_is_logged_in"
+}
 
 
 public enum SessionStatus: Int {
     case active
     case inActive
+    case sessionExpired
 }
 
 public protocol SessionServiceType {
     
     static var shared:SessionServiceType {get}
-    var shouldForceLoggout:Driver<Bool> {get}
-    var status:SessionStatus {get}
+    var sessionStatus:Variable<SessionStatus> {get}
+    //var status:SessionStatus {get}
     var isValid:Bool {get}
     var accessTokenIsValid:Bool {get}
     var xToken:String?  {get}
     var user: BaseModel? { get }
+    var refreshToken:(()->(Observable<String?>))? {get set}
+
     // functions
-    
-    func update(loggedIn:Bool)
-    func userLoggedIn<T:BaseModel>(user:T, type:T.Type, accessToken:BaseTokenModel)
-    func logout()
-    func forceLogout(title:String, message:String)
-    
-    func refreshToken() -> Observable<String?>
-    func beforeLogoutHandler()
-    func afterLoginHandler()
+    func update(status:SessionStatus)
+
+//    func update(loggedIn:Bool)
+    func userLoggedIn<T:BaseModel>(user:T, type:T.Type)//, accessToken:BaseTokenModel)
 }
 
 public class SessionService: SessionServiceType {
-    var accessToken:BaseTokenModel? {
-        get {
-            return BaseTokenModel.getStoredObject(forKey: "current_session") as? BaseTokenModel
-        }
-        set {}
+    
+    public var refreshToken:(()->(Observable<String?>))?
+    
+    var tokenModel:BaseTokenModel? {
+        return BaseTokenModel.getStoredObject(forKey: UserDefaultsKeys.currentSession.rawValue) as? BaseTokenModel
     }
     
     public static var shared:SessionServiceType = SessionService()
     
-    public var shouldForceLoggout = Driver<Bool>.empty()
+    public var sessionStatus:Variable<SessionStatus>
     
     public var user: BaseModel? {
         get {
-            return BaseModel.getStoredObject(forKey: "lafarge_user_key") as? BaseModel
+            return BaseModel.getStoredObject(forKey: UserDefaultsKeys.currentUser.rawValue) as? BaseModel
         }
         set {}
     }
     
+    public var refreshTokenCode:String? {
+        return tokenModel?.refreshToken
+    }
+    
     public var xToken:String? {
         if self.accessTokenIsValid {
-            return accessToken?.accessToken!
+            return tokenModel?.accessToken!
         }
         return nil
     }
     
     public var accessTokenIsValid:Bool {
-        guard let at = accessToken else { return false }
-        return at.isValid
-    }
-    
-    public var status:SessionStatus {
-        let userDefaults = UserDefaults.standard
-        if userDefaults.bool(forKey: "user_is_logged_in") {
-            return .active
-        }else {
-            return .inActive
-        }
+        guard let xtoken = tokenModel else { return false }
+        return xtoken.isValid
     }
     
     public var isValid:Bool {
@@ -84,58 +88,43 @@ public class SessionService: SessionServiceType {
         return false
     }
     
-    let forceLogout = Variable<Bool>(false)
+    var status:SessionStatus {
+        let userIsLoggedIn = UserDefaults.standard.bool(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+        //let tokenStillValid = self.accessTokenIsValid
+        
+        if !userIsLoggedIn  {
+            return .inActive
+        }else {
+            return .active
+        }
+    }
     
     init() {
-        shouldForceLoggout = forceLogout.asDriver()
-    }
-    
-    public func update(loggedIn:Bool) {
-        let userDefaults = UserDefaults.standard
-        if self.isValid {
-            if !loggedIn && (accessToken != nil  && accessToken!.isValid ) {
-                forceLogout.value = true
-            }else {
-                forceLogout.value = false
-            }
-        }
-        userDefaults.set(loggedIn, forKey: "user_is_logged_in")
+        let userIsLoggedIn = UserDefaults.standard.bool(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
         
-        if !loggedIn {
-            accessToken = nil
+        if !userIsLoggedIn  {
+            sessionStatus = Variable<SessionStatus>(.inActive)
+        }else {
+            sessionStatus = Variable<SessionStatus>(.active)
         }
     }
     
-    func smoothLogout() {
-        accessToken?.invalidate()
-        self.update(loggedIn: false)
+    public func update(status:SessionStatus) {
+        let userDefaults = UserDefaults.standard
+        switch status {
+        case .active:
+            userDefaults.set(true, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+        case .inActive:
+            userDefaults.set(false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+        case .sessionExpired:
+            userDefaults.set(false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+        }
+        
+        sessionStatus.value = status
     }
-}
 
-extension SessionService {
-    
-    open func refreshToken() -> Observable<String?> {
-        return Observable.empty()
-    }
-    
-    public func afterLoginHandler() {}
-    
-    public func beforeLogoutHandler() {}
-    
-    public func userLoggedIn<T:BaseModel>(user:T, type:T.Type, accessToken:BaseTokenModel) {
-        self.update(loggedIn: true)
+    public func userLoggedIn<T:BaseModel>(user:T, type:T.Type) {
+        self.update(status:.active)
         self.user = user
-        self.accessToken = accessToken
-        afterLoginHandler()
-    }
-    
-    public func logout() {
-        beforeLogoutHandler()
-        self.smoothLogout()
-    }
-    
-    public func forceLogout(title:String, message:String) {
-        self.update(loggedIn: false)
-        Helpers.showMessage(title: title.localized, description: message.localized)
     }
 }

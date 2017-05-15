@@ -17,13 +17,13 @@ private extension Date {
 
 public class BaseTokenModel: BaseModel {
     
-    var accessToken: String?
-    var tokenType: String?
-    var expiresIn: Int?
-    var refreshToken: String?
+    public var accessToken: String?
+    public var tokenType: String?
+    public var expirationDate = Date()
+    public var refreshToken: String?
     
     static var shared:BaseTokenModel? {
-        guard let token = BaseTokenModel.getStoredObject(forKey: "current_session") as? BaseTokenModel else {
+        guard let token = BaseTokenModel.getStoredObject(forKey: UserDefaultsKeys.currentSession.rawValue) as? BaseTokenModel else {
             return nil
         }
         return token
@@ -33,25 +33,28 @@ public class BaseTokenModel: BaseModel {
         super.mapping(map: map)
         accessToken <- map["access_token"]
         tokenType <- map["token_type"]
-        expiresIn <- map["expires_in"]
         refreshToken <- map["refresh_token"]
+        
+        var expiresInInterval:Int = 0
+        expiresInInterval <- map["expires_in"]
+        expirationDate.addTimeInterval(TimeInterval(expiresInInterval))
     }
     
     var isValid: Bool {
-        return (accessToken != nil )
+        return accessToken != nil && !expirationDate.isInPast
     }
     
     //MARK:- Model Coding Managing
     
     public func save() {
-        self.store(self, withKey: "current_session")
+        self.store(self, withKey: UserDefaultsKeys.currentSession.rawValue)
     }
     
     public override func encodeData(with aCoder: NSCoder) {
         super.encodeData(with: aCoder)
         aCoder.encode(self.accessToken  , forKey: "access_token")
         aCoder.encode(self.tokenType    , forKey: "token_type")
-        aCoder.encode(self.expiresIn    , forKey: "expires_in")
+        aCoder.encode(self.expirationDate    , forKey: "expiration_date")
         aCoder.encode(self.refreshToken , forKey: "refresh_token")
     }
     
@@ -63,8 +66,8 @@ public class BaseTokenModel: BaseModel {
         if let tokenType    = aDecoder.decodeObject(forKey: "token_type") as? String {
             self.tokenType = tokenType
         }
-        if let expiresIn    = aDecoder.decodeObject(forKey: "expires_in") as? Int {
-            self.expiresIn = expiresIn
+        if let expirationDate    = aDecoder.decodeObject(forKey: "expiration_date") as? Date {
+            self.expirationDate = expirationDate
         }
         if let refreshToken = aDecoder.decodeObject(forKey: "refresh_token") as? String {
             self.refreshToken = refreshToken
@@ -72,6 +75,6 @@ public class BaseTokenModel: BaseModel {
     }
 
     func invalidate() {
-        BaseTokenModel.deleteObject(forKey: "current_session")
+        BaseTokenModel.deleteObject(forKey: UserDefaultsKeys.currentSession.rawValue)
     }
 }

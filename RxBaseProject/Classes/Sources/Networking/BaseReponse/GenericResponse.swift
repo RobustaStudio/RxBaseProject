@@ -49,7 +49,9 @@ public class GenericError: NSObject {
             }else {
                 self.errorMessage = response.description
             }
-            SessionService.shared.update(loggedIn: false)
+            
+            // call refresh token
+            ///SessionService.shared.update(loggedIn: false)
             return
         case 500...599:
             errorMessage = GenericError.ErrorMessage
