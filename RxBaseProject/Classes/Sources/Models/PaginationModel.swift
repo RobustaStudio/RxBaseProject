@@ -29,7 +29,7 @@ open class PaginationModel<Type:BaseModel>: BaseModel {
         totalCount  <- map["total"]
         perPage     <- map["per_page"]
         currentPage <- map["current_page"]
-        lastPage    <- map["total_pages"]
+        lastPage    <- map["last_page"]
         nextPageUrl <- map["next_page_url"]
         prevPageUrl <- map["prev_page_url"]
         fromId      <- map["from"]
