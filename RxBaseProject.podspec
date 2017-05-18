@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.16'
+	s.version          = '0.2.17'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
@@ -12,8 +12,14 @@ Pod::Spec.new do |s|
 	s.source_files = 'RxBaseProject/Classes/**/*'
 	s.ios.deployment_target = '9.0'
 	s.preserve_path = 'RxBaseProject/Classes/**/*.{h,m,swift}'
-	s.frameworks = 'UIKit'
-	
+	s.frameworks = 'AVFoundation', 'UIKit'
+
+    #s.requires_arc = true
+    #s.pod_target_xcconfig = {
+    #    'OTHER_LDFLAGS' => '$(inherited)',
+    #    'OTHER_LDFLAGS' => '-lObjC'
+    #}
+
 	#################
 	# Subspec
 	#################

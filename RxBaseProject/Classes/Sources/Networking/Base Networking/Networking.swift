@@ -65,6 +65,14 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
     public let provider: OnlineProvider<API>
     let disposeBag = DisposeBag()
     
+    public static func `default`(allowExtensiveDebuging:Bool=false) -> Networking<API> {
+        var plugins:[PluginType] = []
+        if allowExtensiveDebuging {
+            plugins = [NetworkLoggerPlugin(verbose: false)]
+        }
+        return Networking(provider: newProvider(T.self,plugins))
+    }
+    
     /// Request to fetch and store new XApp token if the current token is missing or expired.
     ///
     /// - Returns: Observable of accessToken or nil
@@ -119,14 +127,6 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
 
 //MARK:- Static NetworkingType methods
 extension NetworkingType {
-    
-    public static func `default`(allowExtensiveDebuging:Bool=false) -> Networking<T> {
-        var plugins:[PluginType] = []
-        if allowExtensiveDebuging {
-            plugins = [NetworkLoggerPlugin(verbose: false)]
-        }
-        return Networking(provider: newProvider(T.self,plugins))
-    }
     
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: BaseAPI {
         return { target in
