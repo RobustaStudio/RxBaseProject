@@ -29,7 +29,7 @@ public extension UIImageView {
         constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[activity]-|", options: [], metrics: nil, views: ["activity":activity])
         self.contentMode = mode
         NSLayoutConstraint.activate(constraints)
-        self.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(0.2))], progressBlock: { (progress, done) in
+        self.kf.setImage(with: url, placeholder: self.image, options: [.transition(.fade(0.2))], progressBlock: { (progress, done) in
             }, completionHandler: { (image, error, cacheType, url) in
                 if error == nil {
                     self.image = image
