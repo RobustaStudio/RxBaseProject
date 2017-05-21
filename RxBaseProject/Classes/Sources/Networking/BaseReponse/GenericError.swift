@@ -1,5 +1,5 @@
 //
-//  ErrorHandler.swift
+//  GenericError.swift
 //
 //
 //  Created by Ahmed Mohamed Fareed on 2/18/17.
@@ -18,6 +18,7 @@ public class GenericError: NSObject {
     
     public var statusCode:Int = 0
     public var errorMessage:String = ""
+    public var errorDic: [String:Any]?
     
     public var errorObject:BaseErrorModel?
     
@@ -46,6 +47,9 @@ public class GenericError: NSObject {
         case 401:
             if let data = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers) as! [String:Any] {
                 self.errorMessage = data["error_description"] as? String ?? ""
+                if(self.errorMessage == "") {
+                    self.errorMessage = data["error_message_sentence"] as? String ?? ""
+                }
             }else {
                 self.errorMessage = response.description
             }
@@ -61,6 +65,7 @@ public class GenericError: NSObject {
                 var message = ""
                 data.forEach{ message = "\(message)\n\($0)"}
                 self.errorMessage = message
+                self.errorDic = data
             }
             break
         default:
