@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.22'
+	s.version          = '0.2.23'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
-					   DESC	
+					   DESC
 	s.homepage         = 'http://gitlab.robustastudio.com/ios/RxBaseProject'
 	s.license          = { :type => 'MIT', :file => 'LICENSE' }
 	s.author           = { 'ahmed93' => 'ahmed.moh.magdi93@gmail.com' }
