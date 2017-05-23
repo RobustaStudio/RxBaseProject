@@ -16,7 +16,7 @@ public extension UIImageView {
     ///
     /// - Parameters:
     ///   - url: url to be fetched
-    public func loadImage(url:URL?, mode:UIViewContentMode = .scaleAspectFit) {
+    public func loadImage(url:URL?, mode:UIViewContentMode = .scaleAspectFit, completion: ((_ image: UIImage?, _ error: Error?) -> ())? = nil) {
         guard let `url` = url else {
             return
         }
@@ -30,16 +30,17 @@ public extension UIImageView {
         self.contentMode = mode
         NSLayoutConstraint.activate(constraints)
         self.kf.setImage(with: url, placeholder: self.image, options: [.transition(.fade(0.2))], progressBlock: { (progress, done) in
-            }, completionHandler: { (image, error, cacheType, url) in
-                if error == nil {
-                    self.image = image
-                }
-                
-                DispatchQueue.main.async {
-                    activity.stopAnimating()
-                    activity.removeFromSuperview()
-                    self.layoutIfNeeded()
-                }
+        }, completionHandler: { (image, error, cacheType, url) in
+            if error == nil {
+                self.image = image
+                completion?(image, error)
+            }
+            
+            DispatchQueue.main.async {
+                activity.stopAnimating()
+                activity.removeFromSuperview()
+                self.layoutIfNeeded()
+            }
         })
     }
 }
