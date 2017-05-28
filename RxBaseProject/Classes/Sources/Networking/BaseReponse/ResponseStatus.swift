@@ -17,3 +17,13 @@ public func == (lhs: ResponseStatus, rhs: ResponseStatus) -> Bool {
         return false
     }
 }
+
+public struct ResponseStatusWithPayload {
+    public var status:ResponseStatus
+    public var payload:Any?
+    
+    public init(status:ResponseStatus, payload:Any?) {
+        self.status = status
+        self.payload = payload
+    }
+}
