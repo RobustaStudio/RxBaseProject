@@ -17,7 +17,7 @@ import SVProgressHUD
 // MARK: - Static Functions
 public class Helpers {
     
-    public static func showMessage(title:String, description:String, timer:Bool = false) {
+    public static func showMessage(title:String, description:String, timer:Bool = false, completion:(()->())? = nil) {
         if description == "" { return }
         
         let alert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(description, comment: ""), preferredStyle: .alert)
@@ -25,7 +25,11 @@ public class Helpers {
         if timer {
             
         }else {
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .cancel, handler:  { (button) in
+                if let block = completion {
+                    block()
+                }
+            }))
         }
         DispatchQueue.main.async {
             Helpers.currentViewController()?.view.endEditing(true)
