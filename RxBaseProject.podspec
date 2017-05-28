@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.27'
+	s.version          = '0.2.28'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 	#################
 	s.dependency 'RxSwift',           '~> 3.3.1'
 	s.dependency 'RxCocoa',           '~> 3.3.1'  
-	s.dependency 'Moya-ObjectMapper/RxSwift', '~> 8.0.4'
+	s.dependency 'Moya-ObjectMapper/RxSwift', '~> 2.3.1'
 	s.dependency 'Moya',              '~> 8.0.3'
 	s.dependency 'Alamofire' ,        '~>4.4.0'
 	s.dependency 'ReachabilitySwift', '~> 3.0.0'
