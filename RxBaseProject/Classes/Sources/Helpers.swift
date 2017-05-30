@@ -38,16 +38,16 @@ public class Helpers {
     }
     
     public static func showLoadingProgress() {
-        DispatchQueue.main.async {
-            SVProgressHUD.setDefaultMaskType(.black)
-            SVProgressHUD.show()
-        }
+        //        DispatchQueue.main.async {
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show()
+        //        }
     }
     
     public static func dismissLoadingProgress() {
-        DispatchQueue.main.async {
-            SVProgressHUD.dismiss()
-        }
+        //        DispatchQueue.main.async {
+        SVProgressHUD.dismiss()
+        //        }
     }
     
     public static func currentViewController() -> UIViewController? {
