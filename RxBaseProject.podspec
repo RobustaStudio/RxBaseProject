@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.29'
+	s.version          = '0.2.30'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again

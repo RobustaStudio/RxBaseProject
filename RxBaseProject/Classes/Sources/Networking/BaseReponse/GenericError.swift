@@ -66,6 +66,8 @@ public class GenericError: NSObject {
                 data.forEach{ message = "\(message)\n\($0)"}
                 self.errorMessage = message
                 self.errorDic = data
+            }else {
+                self.errorMessage = GenericError.ErrorMessage
             }
             break
         default:
