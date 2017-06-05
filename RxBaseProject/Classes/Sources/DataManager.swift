@@ -13,61 +13,63 @@ public final class DataManager: NSObject {
     
     /// Formatter With formate yyyy-MM-dd HH:mm:ss
     public static var sharedDateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = formatter(with: "yyyy-MM-dd HH:mm:ss")
         //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter
     }()
     
     /// Formatter With formate yyyy-MM-DD
     public static var sharedFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
+        return formatter(with: "yyyy-MM-dd")
     }()
     
-    /// Formatter With formate MMMM, DD, yyyy
+    /// Formatter With format MMMM, DD, yyyy
     public static var sharedSMSFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM, dd, yyyy"
-        return dateFormatter
+        return formatter(with: "MMMM, dd, yyyy")
     }()
     
-    /// Formatter With formate yyyy-MM-DD
+    /// Formatter With format yyyy-MM-DD
     public static var sharedDOBFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
+        return formatter(with: "yyyy-MM-dd")
     }()
     
-    /// Formatter With formate DD MMMM yyyy
+    /// Formatter With format DD MMMM yyyy
     public static var sharedCampaignRecipientsFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        //        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        return dateFormatter
+        return formatter(with: "dd MMMM yyyy")
     }()
     
-    /// Formatter With formate DD/MM/yyyy
+    /// Formatter With format DD/MM/yyyy
     public static var sharedDefaultFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter
+        return formatter(with: "dd/MM/yyyy")
     }()
     
-    /// Formatter With formate MM/DD/yyyy
+    /// Formatter With format MM/DD/yyyy
     public static var sharedDefaultFormatter2: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        return dateFormatter
+        return formatter(with: "MM/dd/yyyy")
     }()
     
+    /// Formatter With format yyyy-MM-dd HH:mm:ss
+    public static var sharedDateFormatter_3: DateFormatter = {
+        return formatter(with: "MMM dd, yyyy")
+    }()
     
     public static var sharedNumberDecimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
+        if let localLang = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String] {
+            formatter.locale = Locale(identifier: localLang.first!)
+        }
         formatter.numberStyle = .decimal
         return formatter
     }()
+}
+
+fileprivate func formatter(with format:String) -> DateFormatter {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    if let localLang = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String] {
+        dateFormatter.locale = Locale(identifier: localLang.first!)
+    }
+    return dateFormatter
 }
 
 fileprivate func FormatNumber(_ number:NSNumber?) -> String {

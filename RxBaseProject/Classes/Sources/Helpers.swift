@@ -25,7 +25,7 @@ public class Helpers {
         if timer {
             
         }else {
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .cancel, handler:  { (button) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok".localized, comment: ""), style: .cancel, handler:  { (button) in
                 if let block = completion {
                     block()
                 }
