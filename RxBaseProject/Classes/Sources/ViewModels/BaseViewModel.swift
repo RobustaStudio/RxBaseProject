@@ -33,13 +33,11 @@ open class BaseViewModel: BaseViewModelType {
     public init() {
     }
     
-    public func placeholderTextBaseOn<T:Any>(tableViewPlaceHolderText:inout Driver<String>,
-                                      triger:Observable<Void>,
+    public func placeholderTextBaseOn<T:Any>(tableViewPlaceHolderText:inout Driver<String>, triger:Observable<Void>,
                                       data:Driver<T>, loadingText:String, emptyText:String)
     {
         tableViewPlaceHolderText = Observable.of(triger.withLatestFrom(Observable.just(loadingText)),
-                                                 data.asObservable().withLatestFrom(Observable.just(emptyText)))
-            .merge()
+                                                 data.asObservable().withLatestFrom(Observable.just(emptyText))).merge()
             .asDriver(onErrorJustReturn: "")
     }
 }

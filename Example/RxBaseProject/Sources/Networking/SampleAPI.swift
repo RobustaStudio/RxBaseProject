@@ -79,13 +79,13 @@ extension SampleAPI: BaseAPI {
         }
     }
     
-    var baseURL: URL {
-        switch self {
-        default:
-            return URL(string: Config.shared.url)!
-        }
-        
-    }
+//    var baseURL: URL {
+//        switch self {
+//        default:
+//            return URL(string: Config.shared.url)!
+//        }
+//        
+//    }
     
     public var task: Task {
         switch self {

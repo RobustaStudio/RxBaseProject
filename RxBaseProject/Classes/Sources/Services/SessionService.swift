@@ -43,8 +43,7 @@ public protocol SessionServiceType {
 
     // functions
     func update(status:SessionStatus)
-
-//    func update(loggedIn:Bool)
+    
     func userLoggedIn<T:BaseModel>(user:T, type:T.Type)//, accessToken:BaseTokenModel)
 }
 

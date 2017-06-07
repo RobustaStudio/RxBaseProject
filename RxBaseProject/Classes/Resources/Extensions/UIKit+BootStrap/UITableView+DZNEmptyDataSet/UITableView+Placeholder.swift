@@ -11,36 +11,30 @@ import DZNEmptyDataSet
 
 extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    private static let association = ObjectAssociation<Any>()
+    private static let association_placeholder = ObjectAssociation<Any>()
+    private static let association_placeholderFontColor = ObjectAssociation<UIColor>()
+    private static let association_placeholderFont = ObjectAssociation<UIFont>()
     
     public var placeholderText: String? {
-        get { return UITableView.association[self] as? String }
+        get { return UITableView.association_placeholder[self] as? String }
         set {
-            UITableView.association[self] = newValue
+            UITableView.association_placeholder[self] = newValue
             self.reloadEmptyDataSet()
         }
     }
 
     public var placeholderColor: UIColor? {
-        get { return UITableView.association[self] as? UIColor }
+        get { return UITableView.association_placeholderFontColor[self] }
         set {
-            UITableView.association[self] = newValue
+            UITableView.association_placeholderFontColor[self] = newValue
             self.reloadEmptyDataSet()
         }
     }
     
-    public var placeholderFontSize: CGFloat? {
-        get { return UITableView.association[self] as? CGFloat }
+    public var placeholderFont: UIFont? {
+        get { return UITableView.association_placeholderFont[self] }
         set {
-            UITableView.association[self] = newValue
-            self.reloadEmptyDataSet()
-        }
-    }
-    
-    public var placeholderFontFamily: String? {
-        get { return UITableView.association[self] as? String }
-        set {
-            UITableView.association[self] = newValue
+            UITableView.association_placeholderFont[self] = newValue
             self.reloadEmptyDataSet()
         }
     }
@@ -51,19 +45,18 @@ extension UITableView: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         guard let placeholderValue = placeholderText else {
-            return NSMutableAttributedString(string: "Empty".localized)
+            return NSMutableAttributedString(string: "".localized)
         }
         
-        let text = placeholderText ?? "Empty"
+        let text = placeholderText ?? ""
         let color = placeholderColor ?? UIColor.darkGray
-        let fontSize = placeholderFontSize ?? 25
+        let font = placeholderFont ?? UIFont.systemFont(ofSize: 25)
         
         let textRange = NSMakeRange(0, text.characters.count)
         
         let attributedString = NSMutableAttributedString(string: placeholderValue.localized)
         attributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: textRange)
-        attributedString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: fontSize), range: textRange)
-        
+        attributedString.addAttribute(NSFontAttributeName, value: font, range: textRange)
         return attributedString
     }
     

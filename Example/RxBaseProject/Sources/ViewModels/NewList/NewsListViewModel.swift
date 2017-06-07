@@ -57,6 +57,9 @@ class NewsListViewModel: BaseViewModel , NewsListViewModelType {
             return [NewListSection(model: Void(), items: list)]
         }).asDriver(onErrorJustReturn: [])
         
-//        self.placeholderTextBaseOn(tableViewPlaceHolderText: &tableViewPlaceholderText, data: loadedData)
+        self.placeholderTextBaseOn(tableViewPlaceHolderText: &tableViewPlaceholderText,
+                                   triger: Observable.of(reloadedData.map{_ in Void()}, viewWillAppear.map{_ in Void()}).merge() ,
+                                   data: sections,
+                                   loadingText: "Loading", emptyText: "Empty")
     }
 }

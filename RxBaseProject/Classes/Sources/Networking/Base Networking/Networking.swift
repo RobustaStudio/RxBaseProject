@@ -13,46 +13,11 @@ import Alamofire
 import RxOptional
 import SVProgressHUD
 
-public protocol BaseAPI:TargetType, AccessTokenAuthorizable {
-    
-    var stubbedStatusCode:Int {get}
-}
-
-
-/// Overriding RxMoyaProvider to add custom defaults
-public class OnlineProvider<Target>: RxMoyaProvider<Target> where Target: BaseAPI {
-    
-    fileprivate let online: Observable<Bool>
-    
-    init(endpointClosure: @escaping EndpointClosure = MoyaProvider.defaultEndpointMapping,
-         requestClosure: @escaping RequestClosure = MoyaProvider.defaultRequestMapping,
-         stubClosure: @escaping StubClosure = MoyaProvider.neverStub,
-         manager: Manager = RxMoyaProvider<Target>.defaultAlamofireManager(),
-         plugins: [PluginType] = [],
-         trackInflights: Bool = false,
-         online: Observable<Bool> = connectedToInternetOrStubbing()) {
-        
-        self.online = online
-        super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, manager: manager, plugins: plugins, trackInflights: trackInflights)
-    }
-    
-    // Override request to inject XAppTokenRequest if needed
-    
-    
-    /// which is responsable for handling all the requests going out/in
-    ///
-    /// - Parameter token: the request that is required to be sent
-    /// - Returns: the response for the sent request
-    override public func request(_ token: Target) -> Observable<Moya.Response> {
-        
-        let actualRequest = super.request(token)
-        return online
-            .ignore(value: false)  // Wait until we're online
-            .take(1)        // Take 1 to make sure we only invoke the API once.
-            .flatMap { _ in // Turn the online state into a network request
-                return actualRequest
-        }
-    }
+private func newProvider<T>(_ type:T.Type, _ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: BaseAPI {
+    return OnlineProvider(endpointClosure: Networking<T>.endpointsClosure(xAccessToken),
+                          requestClosure: Networking<T>.endpointResolver(),
+                          stubClosure: Networking<T>.APIStubBehaviour,
+                          plugins: plugins)
 }
 
 protocol NetworkingType {
@@ -77,8 +42,8 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
     ///
     /// - Returns: Observable of accessToken or nil
     private func refreshAccessToken() -> Observable<Bool> {
-        // If we have a valid token, return it and forgo a request for a fresh one.
         
+        // If we have a valid token, return it and forgo a request for a fresh one.
         if SessionService.shared.xToken != nil  {
             return Observable.just(false)
         }
@@ -136,6 +101,7 @@ extension NetworkingType {
                                                     method: target.method,
                                                     parameters: target.parameters,
                                                     parameterEncoding: target.parameterEncoding)
+//                                                    httpHeaderFields: <#T##[String : String]?#>)
             
             // If we were given an xAccessToken, add it
             if let xAccessToken = SessionService.shared.xToken {
@@ -159,11 +125,4 @@ extension NetworkingType {
     static func APIStubBehaviour<T>(_: T) -> Moya.StubBehavior {
         return Config.shared.usingStubbed ? .immediate : .never
     }
-}
-
-private func newProvider<T>(_ type:T.Type, _ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: BaseAPI {
-    return OnlineProvider(endpointClosure: Networking<T>.endpointsClosure(xAccessToken),
-                          requestClosure: Networking<T>.endpointResolver(),
-                          stubClosure: Networking<T>.APIStubBehaviour,
-                          plugins: plugins)
 }
