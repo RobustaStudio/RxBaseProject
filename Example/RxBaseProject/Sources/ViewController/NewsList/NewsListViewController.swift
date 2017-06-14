@@ -49,12 +49,12 @@ class NewsListViewController: BaseViewController {
         super.configureRx()
         
         self.rx.viewWillAppear
-            .bindTo(viewModel.viewWillAppear)
+            .bind(to: viewModel.viewWillAppear)
             .addDisposableTo(self.disposeBag)
         
         self.refreshControl.rx
             .controlEvent(.valueChanged)
-            .bindTo(self.viewModel.reloadTrigger)
+            .bind(to: self.viewModel.reloadTrigger)
             .addDisposableTo(self.disposeBag)
         
         viewModel.sections.asObservable()

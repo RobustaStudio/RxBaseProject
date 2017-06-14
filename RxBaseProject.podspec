@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name             = 'RxBaseProject'
-	s.version          = '0.2.32'
+	s.version          = '0.2.34'
 	s.summary          = 'RxBaseProject is a kickstarting project for RxApplications'
 	s.description      = <<-DESC
 	RxBaseProject is a kickstarting project for RxApplications, no need to keep repeating the code over and over again
@@ -31,22 +31,22 @@ Pod::Spec.new do |s|
 	# Dependecies
 	################
 
-	s.dependency 'Moya-ObjectMapper/RxSwift', '2.3'
-	# s.dependency 'RxSwift',           '~> 3.3.1'
-	# s.dependency 'RxCocoa',           '~> 3.3.1'
-	s.dependency 'Moya',              '~> 8.0.0'
-	s.dependency 'Alamofire' ,        '~>4.4.0'
+	s.dependency 'Moya-ObjectMapper/RxSwift', '2.3.2'
+	s.dependency 'RxSwift'
+	s.dependency 'RxCocoa'
+	s.dependency 'Moya',              '~> 8.0.5'
+	s.dependency 'Alamofire' ,        '~> 4.4.0'
 	s.dependency 'ReachabilitySwift', '~> 3.0.0'
 	s.dependency 'Result' ,           '~> 3.2.1'
-	s.dependency 'DZNEmptyDataSet' ,  '~>1.8.1'
+	s.dependency 'DZNEmptyDataSet' ,  '~> 1.8.1'
 	s.dependency 'Kingfisher' ,       '~> 3.6.1'
 	s.dependency 'ReusableKit' ,      '~> 1.1.0'
-	s.dependency 'RxDataSources' ,    '~>1.0.3'
-	# s.dependency 'RxGesture' ,        '~> 1.0.0'
-	# s.dependency 'RxKeyboard' ,     '~>0.4'
-	s.dependency 'RxOptional' ,       '~>3.1.3'
-	s.dependency 'SVProgressHUD',     '~>2.1.2'
-	s.dependency 'SnapKit',           '~>3.2.0'
+	s.dependency 'RxDataSources' ,    '~> 1.0.3'
+	# s.dependency 'RxGesture' ,      '~> 1.0.0'
+	# s.dependency 'RxKeyboard' ,     '~> 0.4'
+	s.dependency 'RxOptional' ,       '~> 3.1.3'
+	s.dependency 'SVProgressHUD',     '~> 2.1.2'
+	s.dependency 'SnapKit',           '~> 3.2.0'
 	s.dependency 'SwiftMessages',     '~> 3.3.3'
-	s.dependency 'Then',              '~>2.1.0'
+	s.dependency 'Then',              '~> 2.1.0'
 end
