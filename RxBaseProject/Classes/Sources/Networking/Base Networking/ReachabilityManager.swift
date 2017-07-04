@@ -9,7 +9,10 @@
 import UIKit
 import RxSwift
 import ReachabilitySwift
+
+//#if SwiftMessages
 import SwiftMessages
+//#endif
 
 private let reachabilityManager = ReachabilityManager()
 
@@ -34,6 +37,7 @@ class ReachabilityManager {
     var reach: Observable<Bool> {
         return _reach.asObservable()
     }
+        
     
     var view:MessageView!
     
@@ -51,6 +55,7 @@ class ReachabilityManager {
         
         self._reach.onNext(self.reachability.isReachable)
         
+            
         view = MessageView.viewFromNib(layout: .StatusLine)
         view.configureTheme(.error)
         view.configureDropShadow()
@@ -63,7 +68,7 @@ class ReachabilityManager {
         config.dimMode = .none
         config.interactiveHide = false
         config.preferredStatusBarStyle = .lightContent
-
+            
         self.reachability.whenReachable = { _ in
             print("reachable")
             SwiftMessages.hide()
@@ -78,6 +83,8 @@ class ReachabilityManager {
             DispatchQueue.main.async { self._reach.onNext(false) }
         }
     }
+    
+    
     
     deinit {
         reachability.stopNotifier()

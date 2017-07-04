@@ -90,8 +90,7 @@ public class SessionService: SessionServiceType {
     }
     
     var status:SessionStatus {
-        let userIsLoggedIn = UserDefaults.standard.bool(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
-        //let tokenStillValid = self.accessTokenIsValid
+        let userIsLoggedIn = UserDefaultsService.retrieveObject(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue) as! Bool
         
         if !userIsLoggedIn  {
             return .inActive
@@ -101,7 +100,7 @@ public class SessionService: SessionServiceType {
     }
     
     init() {
-        let userIsLoggedIn = UserDefaults.standard.bool(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+        let userIsLoggedIn = UserDefaultsService.retrieveObject(forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue) as! Bool
         
         if !userIsLoggedIn  {
             sessionStatus = Variable<SessionStatus>(.inActive)
@@ -111,16 +110,14 @@ public class SessionService: SessionServiceType {
     }
     
     public func update(status:SessionStatus) {
-        let userDefaults = UserDefaults.standard
         switch status {
         case .active:
-            userDefaults.set(true, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+            UserDefaultsService.storeObject(object: true, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
         case .inActive:
-            userDefaults.set(false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+            UserDefaultsService.storeObject(object: false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
         case .sessionExpired:
-            userDefaults.set(false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
+            UserDefaultsService.storeObject(object: false, forKey: PrivateUserDefaultsKeys.isUserLoggedIn.rawValue)
         }
-        
         sessionStatus.value = status
     }
 

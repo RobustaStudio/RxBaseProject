@@ -13,7 +13,7 @@ import Alamofire
 import RxOptional
 import SVProgressHUD
 
-private func newProvider<T>(_ type:T.Type, _ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T> where T: BaseAPI {
+private func newProvider<T>(_ type:T.Type, _ plugins: [PluginType], xAccessToken: String? = nil) -> OnlineProvider<T>  {
     return OnlineProvider(endpointClosure: Networking<T>.endpointsClosure(xAccessToken),
                           requestClosure: Networking<T>.endpointResolver(),
                           stubClosure: Networking<T>.APIStubBehaviour,
@@ -93,6 +93,10 @@ public struct Networking<API>: NetworkingType where API: BaseAPI {
 //MARK:- Static NetworkingType methods
 extension NetworkingType {
     
+    // TODO:- Check if there was security in the app then add the securityData
+    // TODO:- 
+    // TODO:- 
+    
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint<T> where T: BaseAPI {
         return { target in
             
@@ -100,16 +104,22 @@ extension NetworkingType {
                                                     sampleResponseClosure:  {.networkResponse(target.stubbedStatusCode, target.sampleData)},
                                                     method: target.method,
                                                     parameters: target.parameters,
-                                                    parameterEncoding: target.parameterEncoding)
-//                                                    httpHeaderFields: <#T##[String : String]?#>)
+                                                    parameterEncoding: target.parameterEncoding,
+                                                    httpHeaderFields: target.headers)
             
             // If we were given an xAccessToken, add it
             if let xAccessToken = SessionService.shared.xToken {
-                return endpoint.adding(httpHeaderFields: ["Authorization": "Bearer \(xAccessToken)", "Content-Type":"application/json", "Accept":"application/json"])
+                return endpoint.adding(httpHeaderFields: ["Authorization": "Bearer \(xAccessToken)"])
             }
             
             // non-XAuth token requests
-            return endpoint.adding(httpHeaderFields: Config.shared.headers())
+            guard let _security = Config.shared.security else {return endpoint}
+            
+            if _security.usingAppToken {
+                return endpoint.adding(httpHeaderFields: [_security.appTokenKey:_security.appTokenValue])
+            }else {
+                return endpoint.adding(httpHeaderFields: [_security.clientIdKey:_security.clientIdValue, _security.clientSecretKey:_security.clientSecretValue])
+            }
         }
     }
     
