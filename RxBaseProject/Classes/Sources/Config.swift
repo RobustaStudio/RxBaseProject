@@ -108,7 +108,7 @@ public class Config:ConfigurationsProtocol {
     
     public var url:String {
         guard let `_urls` = self.urls else { return "" }
-        if isProduction {
+        if isProduction == true {
             return _urls.productionURL
         }else {
             return _urls.staggingURL

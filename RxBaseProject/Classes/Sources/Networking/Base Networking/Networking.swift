@@ -133,6 +133,6 @@ extension NetworkingType {
     }
     
     static func APIStubBehaviour<T>(_: T) -> Moya.StubBehavior {
-        return Config.shared.usingStubbed ? .immediate : .never
+        return Config.shared.usingStubbed == true ? .immediate : .never
     }
 }
