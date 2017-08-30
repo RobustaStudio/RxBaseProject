@@ -12,6 +12,14 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
+class Inputs {
+    
+}
+
+class Outputs {
+    
+}
+
 protocol NewsListViewModelType: BaseViewModelType {
     // Input
     var reloadTrigger: PublishSubject<Void> { get }

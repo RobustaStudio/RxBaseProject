@@ -9,25 +9,19 @@
 import UIKit
 import RxSwift
 import ReachabilitySwift
-
-//#if SwiftMessages
 import SwiftMessages
-//#endif
 
 private let reachabilityManager = ReachabilityManager()
-
 
 /// An observable that completes when the app gets online (possibly completes immediately).
 ///
 /// - Returns: Observable of boolean
 func connectedToInternetOrStubbing() -> Observable<Bool> {
-//    let stubbing = Observable.just(AppSetup.useStubbed)
     guard let online = reachabilityManager?.reach else {
         return Observable.just(false)
     }
     return online //[online, stubbing].combineLatestOr()
 }
-
 
 class ReachabilityManager {
     
@@ -38,7 +32,6 @@ class ReachabilityManager {
         return _reach.asObservable()
     }
         
-    
     var view:MessageView!
     
     init?() {
@@ -84,9 +77,8 @@ class ReachabilityManager {
         }
     }
     
-    
-    
     deinit {
         reachability.stopNotifier()
     }
 }
+

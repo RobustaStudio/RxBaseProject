@@ -9,6 +9,20 @@
 import Foundation
 import ObjectMapper
 
+
+public class PaginationModelConfig {
+    
+    public var totalCount: String   = "total"
+    public var perPage: String      = "per_page"
+    public var currentPage: String  = "current_page"
+    public var lastPage: String     = "last_page"
+    public var nextPageUrl: String  = "next_page_url"
+    public var prevPageUrl: String  = "prev_page_url"
+    public var fromId: String       = "from"
+    public var toId: String         = "to"
+    public var list: String         = "data"
+}
+
 open class PaginationModel<Type:BaseModel>: BaseModel {
     
     public var totalCount:Int?
@@ -26,14 +40,16 @@ open class PaginationModel<Type:BaseModel>: BaseModel {
     
     open override func mapping(map: Map) {
         super.mapping(map: map)
-        totalCount  <- map["total"]
-        perPage     <- map["per_page"]
-        currentPage <- map["current_page"]
-        lastPage    <- map["last_page"]
-        nextPageUrl <- map["next_page_url"]
-        prevPageUrl <- map["prev_page_url"]
-        fromId      <- map["from"]
-        toId        <- map["to"]
-        list        <- map["data"]
+        let pg = Config.shared.paginationKeys!
+        
+        totalCount  <- map[pg.totalCount]
+        perPage     <- map[pg.perPage]
+        currentPage <- map[pg.currentPage]
+        lastPage    <- map[pg.lastPage]
+        nextPageUrl <- map[pg.nextPageUrl]
+        prevPageUrl <- map[pg.prevPageUrl]
+        fromId      <- map[pg.fromId]
+        toId        <- map[pg.toId]
+        list        <- map[pg.list]
     }
 }

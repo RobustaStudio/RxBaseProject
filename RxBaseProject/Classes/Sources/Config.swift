@@ -27,6 +27,7 @@ public enum AppConfigurations {
     case isProduction
     case isUsingStubbedAPIs
     case usingRefreshToken
+    case paginationModelKeysObject
 }
 
 extension AppConfigurations: Equatable {}
@@ -50,7 +51,8 @@ public protocol ConfigurationsProtocol {
     var isProduction:Bool! {get}
     var usingStubbed:Bool! {get}
     var url:String {get}
-    
+    var paginationKeys:PaginationModelConfig! {get}
+        
     func configure(con:[AppConfigurations:Any])
 }
 
@@ -63,6 +65,7 @@ public class Config:ConfigurationsProtocol {
     
     public var usingStubbed:Bool!
     public var isProduction:Bool!
+    public var paginationKeys:PaginationModelConfig!
     
     // Pod Private Variables
     var _security:__security? {
@@ -77,6 +80,7 @@ public class Config:ConfigurationsProtocol {
         }
     }
     
+    
     var refreshTokenStatus:Bool = false
     
     public func configure(con:[AppConfigurations:Any]) {
@@ -89,6 +93,12 @@ public class Config:ConfigurationsProtocol {
         
         if let allowRefeshToken = con[AppConfigurations.usingRefreshToken] as? Bool {
             self.refreshTokenStatus = allowRefeshToken
+        }
+        
+        if let pg = con[AppConfigurations.paginationModelKeysObject] as? PaginationModelConfig {
+            self.paginationKeys = pg
+        }else {
+            self.paginationKeys = PaginationModelConfig()
         }
     }
 
@@ -104,4 +114,5 @@ public class Config:ConfigurationsProtocol {
             return _urls.staggingURL
         }
     }
+    
 }
