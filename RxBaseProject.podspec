@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 	s.homepage         = 'http://gitlab.robustastudio.com/ios/RxBaseProject'
 	s.license          = { :type => 'MIT', :file => 'LICENSE' }
 	s.author           = { 'ahmed93' => 'ahmed.moh.magdi93@gmail.com' }
-	s.source           = { :git => 'gitlab@gitlab.robustastudio.com:ios/RxBaseProject.git', :tag => s.version.to_s }
+	s.source           = { :git => 'git@github.com:RobustaStudio/RxBaseProject.git', :tag => s.version.to_s }
 	s.source_files = 'RxBaseProject/Classes/**/*'
 	s.ios.deployment_target = '9.0'
     s.preserve_path = 'RxBaseProject/Classes/**/*.{h,m,swift}'

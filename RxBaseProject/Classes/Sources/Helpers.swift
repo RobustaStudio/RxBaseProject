@@ -37,6 +37,26 @@ public class Helpers {
         }
     }
     
+    public static func showConfirmation(title:String, description:String, timer:Bool = false, completion:(()->())? = nil) {
+        if description == "" { return }
+        
+        let alert = UIAlertController(title: NSLocalizedString(title, comment: ""), message: NSLocalizedString(description, comment: ""), preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok".localized, comment: ""), style: .default, handler:  { (button) in
+            if let block = completion {
+                block()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel".localized, comment: ""), style: .cancel, handler:  { (button) in
+        }))
+        
+        DispatchQueue.main.async {
+            Helpers.currentViewController()?.view.endEditing(true)
+            Helpers.currentViewController()?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     public static func showLoadingProgress() {
         //        DispatchQueue.main.async {
         SVProgressHUD.setDefaultMaskType(.black)
