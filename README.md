@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/RxBaseProject.svg?style=flat)](http://cocoapods.org/pods/RxBaseProject)
 [![Platform](https://img.shields.io/cocoapods/p/RxBaseProject.svg?style=flat)](http://cocoapods.org/pods/RxBaseProject)
 
-RxBaseProject is base on RxSwift. It is still in early stages 'Beta versions'. It aims to help developers to get ried of the small common things and easy annoying confiruations. RxBaseProject provides things like
+RxBaseProject is based on RxSwift. It is still in early stages 'Beta versions'. It aims to help developers to get rid of the small common things and easy annoying configurations. RxBaseProject provides things like
 - Networking Manager: while base on RxAFNetwokring + Rx.... . It provides a BaseAPI class the wraps the needed classes to be extended [for details more check the exmple]
 - Reachablity Handling: RxBaseProject provide a basie implemetation for handling reachblity issues using RxReachblity + the alart handling.
 
